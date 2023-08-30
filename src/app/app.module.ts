@@ -16,6 +16,7 @@ import { TablaComponent } from './Components/tabla/tabla.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+<<<<<<< HEAD
 import { RolComponent } from './Components/rol/rol.component';
 import { RolPermisoComponent } from './Components/rol-permiso/rol-permiso.component';
 import { ModuloComponent } from './Components/modulo/modulo.component';
@@ -28,6 +29,16 @@ import { TreeComponent } from './Components/tree/tree.component';
 import { MatTreeModule } from '@angular/material/tree';
 import { DragDropComponent } from './Components/drag-drop/drag-drop.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+=======
+import { PreguntasComponent } from './Components/preguntas/preguntas.component';
+import { TableComponent } from './Components/table/table.component';
+import { AddressComponent } from './Components/address/address.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatCardModule } from '@angular/material/card';
+import { ReactiveFormsModule } from '@angular/forms';
+>>>>>>> d8e21165fbde7cf01275d8f60aca21b004b342da
 
 @NgModule({
   declarations: [
@@ -36,6 +47,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MenuComponent,
     PersonasComponent,
     TablaComponent,
+<<<<<<< HEAD
     RolComponent,
     RolPermisoComponent,
     ModuloComponent,
@@ -43,6 +55,11 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     DashboardComponent,
     TreeComponent,
     DragDropComponent,
+=======
+    PreguntasComponent,
+    TableComponent,
+    AddressComponent
+>>>>>>> d8e21165fbde7cf01275d8f60aca21b004b342da
   ],
   imports: [
     BrowserModule,
@@ -56,11 +73,19 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+<<<<<<< HEAD
     MatGridListModule,
     MatCardModule,
     MatMenuModule,
     MatTreeModule,
     DragDropModule
+=======
+    MatInputModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatCardModule,
+    ReactiveFormsModule
+>>>>>>> d8e21165fbde7cf01275d8f60aca21b004b342da
   ],
   providers: [],
   bootstrap: [AppComponent]
