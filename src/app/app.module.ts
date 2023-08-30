@@ -17,6 +17,13 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { PreguntasComponent } from './Components/preguntas/preguntas.component';
+import { TableComponent } from './Components/table/table.component';
+import { AddressComponent } from './Components/address/address.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatCardModule } from '@angular/material/card';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,7 +32,9 @@ import { PreguntasComponent } from './Components/preguntas/preguntas.component';
     MenuComponent,
     PersonasComponent,
     TablaComponent,
-    PreguntasComponent
+    PreguntasComponent,
+    TableComponent,
+    AddressComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +47,12 @@ import { PreguntasComponent } from './Components/preguntas/preguntas.component';
     MatListModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatInputModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatCardModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
