@@ -16,6 +16,12 @@ import { TablaComponent } from './Components/tabla/tabla.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { PreguntasComponent } from './preguntas/preguntas.component';
+import { TemasComponent } from './temas/temas.component';
+import { PruebasComponent } from './pruebas/pruebas.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
+import { IngresosComponent } from './ingresos/ingresos.component';
+import { EstadisticasComponent } from './estadisticas/estadisticas.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +29,13 @@ import { MatSortModule } from '@angular/material/sort';
     EstudiantesComponent,
     MenuComponent,
     PersonasComponent,
-    TablaComponent
+    TablaComponent,
+    PreguntasComponent,
+    TemasComponent,
+    PruebasComponent,
+    UsuariosComponent,
+    IngresosComponent,
+    EstadisticasComponent
   ],
   imports: [
     BrowserModule,
