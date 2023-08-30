@@ -21,7 +21,6 @@ import { RolComponent } from './Components/rol/rol.component';
 import { RolPermisoComponent } from './Components/rol-permiso/rol-permiso.component';
 import { ModuloComponent } from './Components/modulo/modulo.component';
 import { MateriaComponent } from './Components/materia/materia.component';
-import { PersonaComponent } from './Components/persona/persona.component';
 =======
 import { PreguntasComponent } from './preguntas/preguntas.component';
 import { TemasComponent } from './temas/temas.component';
@@ -43,7 +42,6 @@ import { EstadisticasComponent } from './estadisticas/estadisticas.component';
     RolPermisoComponent,
     ModuloComponent,
     MateriaComponent,
-    PersonaComponent
 =======
     PreguntasComponent,
     TemasComponent,
