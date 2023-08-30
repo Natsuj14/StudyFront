@@ -16,11 +16,20 @@ import { TablaComponent } from './Components/tabla/tabla.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+<<<<<<< HEAD
 import { RolComponent } from './Components/rol/rol.component';
 import { RolPermisoComponent } from './Components/rol-permiso/rol-permiso.component';
 import { ModuloComponent } from './Components/modulo/modulo.component';
 import { MateriaComponent } from './Components/materia/materia.component';
 import { PersonaComponent } from './Components/persona/persona.component';
+=======
+import { PreguntasComponent } from './preguntas/preguntas.component';
+import { TemasComponent } from './temas/temas.component';
+import { PruebasComponent } from './pruebas/pruebas.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
+import { IngresosComponent } from './ingresos/ingresos.component';
+import { EstadisticasComponent } from './estadisticas/estadisticas.component';
+>>>>>>> 3169d8cd98b62963bb182ade4a5d824efa9377a3
 
 @NgModule({
   declarations: [
@@ -29,11 +38,20 @@ import { PersonaComponent } from './Components/persona/persona.component';
     MenuComponent,
     PersonasComponent,
     TablaComponent,
+<<<<<<< HEAD
     RolComponent,
     RolPermisoComponent,
     ModuloComponent,
     MateriaComponent,
     PersonaComponent
+=======
+    PreguntasComponent,
+    TemasComponent,
+    PruebasComponent,
+    UsuariosComponent,
+    IngresosComponent,
+    EstadisticasComponent
+>>>>>>> 3169d8cd98b62963bb182ade4a5d824efa9377a3
   ],
   imports: [
     BrowserModule,
