@@ -16,19 +16,18 @@ import { TablaComponent } from './Components/tabla/tabla.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-<<<<<<< HEAD
 import { RolComponent } from './Components/rol/rol.component';
 import { RolPermisoComponent } from './Components/rol-permiso/rol-permiso.component';
 import { ModuloComponent } from './Components/modulo/modulo.component';
 import { MateriaComponent } from './Components/materia/materia.component';
-=======
-import { PreguntasComponent } from './preguntas/preguntas.component';
-import { TemasComponent } from './temas/temas.component';
-import { PruebasComponent } from './pruebas/pruebas.component';
-import { UsuariosComponent } from './usuarios/usuarios.component';
-import { IngresosComponent } from './ingresos/ingresos.component';
-import { EstadisticasComponent } from './estadisticas/estadisticas.component';
->>>>>>> 3169d8cd98b62963bb182ade4a5d824efa9377a3
+import { DashboardComponent } from './Components/dashboard/dashboard.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
+import { TreeComponent } from './Components/tree/tree.component';
+import { MatTreeModule } from '@angular/material/tree';
+import { DragDropComponent } from './Components/drag-drop/drag-drop.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -37,19 +36,13 @@ import { EstadisticasComponent } from './estadisticas/estadisticas.component';
     MenuComponent,
     PersonasComponent,
     TablaComponent,
-<<<<<<< HEAD
     RolComponent,
     RolPermisoComponent,
     ModuloComponent,
     MateriaComponent,
-=======
-    PreguntasComponent,
-    TemasComponent,
-    PruebasComponent,
-    UsuariosComponent,
-    IngresosComponent,
-    EstadisticasComponent
->>>>>>> 3169d8cd98b62963bb182ade4a5d824efa9377a3
+    DashboardComponent,
+    TreeComponent,
+    DragDropComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,7 +55,12 @@ import { EstadisticasComponent } from './estadisticas/estadisticas.component';
     MatListModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
+    MatTreeModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]
