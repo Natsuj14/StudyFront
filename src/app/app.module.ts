@@ -16,6 +16,11 @@ import { TablaComponent } from './Components/tabla/tabla.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { RolComponent } from './Components/rol/rol.component';
+import { RolPermisoComponent } from './Components/rol-permiso/rol-permiso.component';
+import { ModuloComponent } from './Components/modulo/modulo.component';
+import { MateriaComponent } from './Components/materia/materia.component';
+import { PersonaComponent } from './Components/persona/persona.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +28,12 @@ import { MatSortModule } from '@angular/material/sort';
     EstudiantesComponent,
     MenuComponent,
     PersonasComponent,
-    TablaComponent
+    TablaComponent,
+    RolComponent,
+    RolPermisoComponent,
+    ModuloComponent,
+    MateriaComponent,
+    PersonaComponent
   ],
   imports: [
     BrowserModule,
