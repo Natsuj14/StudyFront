@@ -6,6 +6,12 @@ import { PruebaComponent } from './Componentes/prueba/prueba.component';
 import { AreaComponent } from './Componentes/area/area.component';
 import { EstadisticaComponent } from './Componentes/estadistica/estadistica.component';
 import { IngresoComponent } from './Componentes/ingreso/ingreso.component';
+import { MateriaComponent } from './Componentes/materia/materia.component';
+import { PersonaComponent } from './Componentes/persona/persona.component';
+import { PreguntaComponent } from './Componentes/pregunta/pregunta.component';
+import { RolPermisoComponent } from './Componentes/rol-permiso/rol-permiso.component';
+import { TemaComponent } from './Componentes/tema/tema.component';
+import { ModuloComponent } from './Componentes/modulo/modulo.component';
 
 const routes: Routes = [
   { path: "Usuarios", component: UsuarioComponent },
@@ -13,7 +19,13 @@ const routes: Routes = [
   { path: "Pruebas", component: PruebaComponent },
   { path: "Areas", component: AreaComponent },
   { path: "Estadisticas", component: EstadisticaComponent },
-  { path: "Ingresos", component: IngresoComponent }
+  { path: "Ingresos", component: IngresoComponent },
+  { path: "Materias", component: MateriaComponent },
+  { path: "Personas", component: PersonaComponent },
+  { path: "Preguntas", component: PreguntaComponent },
+  { path: "Rol-Permiso", component: RolPermisoComponent },
+  { path: "Temas", component: TemaComponent },
+  { path: "Modulos", component: ModuloComponent }
 
 ];
 
