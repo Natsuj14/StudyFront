@@ -40,6 +40,7 @@ import { TreeComponent } from './Componentes/tree/tree.component';
 import { MatTreeModule } from '@angular/material/tree';
 import { DragDropComponent } from './Componentes/drag-drop/drag-drop.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { AvatarModule } from 'ngx-avatars';
 
 
 @NgModule({
@@ -85,7 +86,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MatGridListModule,
     MatMenuModule,
     MatTreeModule,
-    DragDropModule
+    DragDropModule,
+    AvatarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
