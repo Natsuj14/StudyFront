@@ -3,19 +3,3 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-
-#Icono {
-    position: absolute;
-    margin-right: 10px;
-    margin-top: 10px;
-    right: 0px;
-    z-index: 100;
-    font-size: 20px;
-    background-color: tomato;
-    width: 50px; /* Ajusta el tamaño del ícono aquí */
-    height: 50px; /* Ajusta el tamaño del ícono aquí */
-    text-align: center;
-    line-height: 50px; /* Debe coincidir con el alto y ancho para centrar el texto verticalmente */
-    border-radius: 50%; /* Para hacer que el ícono sea un círculo */
-  }
-  
