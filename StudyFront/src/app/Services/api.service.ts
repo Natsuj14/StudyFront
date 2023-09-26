@@ -10,13 +10,15 @@ export class ApiService {
   Url = "https://localhost:7211/api/"
 
   public async GET(controller:String) {
-
+    var result:any
     await this.api.get(this.Url+controller).toPromise().then((res => {
       console.log(res);
+      result=res;
     })
     )
+    return result;
   }
-
+  
   public async post(controller:String, body: any) {
     return await this.api.post(this.Url + controller, body).subscribe((res) => {});
   }
