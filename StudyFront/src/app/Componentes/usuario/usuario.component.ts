@@ -4,6 +4,8 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ApiService } from 'src/app/Services/api.service';
 
+export class IconOverviewExample {}
+
 @Component({
   selector: 'app-usuario',
   templateUrl: './usuario.component.html',
@@ -45,7 +47,7 @@ export class UsuarioComponent implements OnInit {
     for(let column in data[0]){
       this.displayedColumns.push(column);
     }
-
+    this.displayedColumns.push('Acciones');
   }
 
   applyFilter(event: Event) {

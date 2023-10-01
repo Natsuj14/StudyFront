@@ -45,7 +45,7 @@ export class AreaComponent implements OnInit {
     for (let column in data[0]) {
       this.displayedColumns.push(column);
     }
-
+    this.displayedColumns.push('Acciones');
   }
 
   applyFilter(event: Event) {
