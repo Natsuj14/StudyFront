@@ -40,6 +40,7 @@ export class ModuloComponent implements OnInit {
       this.displayedColumns.push(column)
 
     }
+    this.displayedColumns.push('Acciones');
   }
 
   applyFilter(event: Event) {

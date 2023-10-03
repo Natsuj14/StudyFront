@@ -1,0 +1,39 @@
+/* Centrar la tabla en su contenedor */
+.table-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* Añadir centrado vertical */
+    height: 100vh;
+    /* Añadir altura del 100% del viewport para centrar verticalmente */
+}
+
+/* Estilos para los iconos */
+.option {
+    float: left;
+    cursor: pointer;
+    color: #007bff;
+    /* Color del icono (puedes cambiarlo según tu preferencia) */
+    text-decoration: none;
+    font-size: 20px;
+    /* Tamaño de fuente más grande para hacer los botones más grandes */
+    line-height: 1;
+    /* Añadir line-height para separar los botones si es necesario */
+}
+
+.option:hover {
+    color: #0056b3;
+    /* Cambiar color al pasar el ratón por encima (opcional) */
+}
+
+/* Ajustar el espaciado entre las columnas de la tabla */
+td.mat-cell {
+    padding: 8px 16px;
+    /* Ajustar el espacio interno de las celdas */
+}
+
+th.mat-header-cell {
+    padding: 8px 16px;
+    /* Ajustar el espacio interno de las celdas del encabezado */
+}
