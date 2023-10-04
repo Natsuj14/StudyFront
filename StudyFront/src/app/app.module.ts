@@ -41,6 +41,7 @@ import { MatTreeModule } from '@angular/material/tree';
 import { DragDropComponent } from './Componentes/drag-drop/drag-drop.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { AvatarModule } from 'ngx-avatars';
+import { FormPersonaComponent } from './Componentes/Forms/form-persona/form-persona.component';
 
 
 @NgModule({
@@ -63,7 +64,8 @@ import { AvatarModule } from 'ngx-avatars';
     TableComponent,
     DashboardComponent,
     TreeComponent,
-    DragDropComponent
+    DragDropComponent,
+    FormPersonaComponent
   ],
   imports: [
     HttpClientModule,

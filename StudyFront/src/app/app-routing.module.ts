@@ -12,6 +12,7 @@ import { PreguntaComponent } from './Componentes/pregunta/pregunta.component';
 import { RolPermisoComponent } from './Componentes/rol-permiso/rol-permiso.component';
 import { TemaComponent } from './Componentes/tema/tema.component';
 import { ModuloComponent } from './Componentes/modulo/modulo.component';
+import { FormPersonaComponent } from './Componentes/Forms/form-persona/form-persona.component';
 
 const routes: Routes = [
   { path: "Usuarios", component: UsuarioComponent },
@@ -25,7 +26,8 @@ const routes: Routes = [
   { path: "Preguntas", component: PreguntaComponent },
   { path: "Rol-Permiso", component: RolPermisoComponent },
   { path: "Temas", component: TemaComponent },
-  { path: "Modulos", component: ModuloComponent }
+  { path: "Modulos", component: ModuloComponent },
+  { path: "FormPersonas", component: FormPersonaComponent },
 
 ];
 

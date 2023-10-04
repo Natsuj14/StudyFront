@@ -1,0 +1,67 @@
+<form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>Formulario Persona</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Nombre" formControlName="nombre">
+            <mat-error *ngIf="addressForm.controls['nombre'].hasError('required')">
+              El nombre es <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Apellido" formControlName="apellido">
+            <mat-error *ngIf="addressForm.controls['apellido'].hasError('required')">
+              El apellido es <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Edad" formControlName="edad">
+            <mat-error *ngIf="addressForm.controls['edad'].hasError('required')">
+              La edad es <strong>requerida</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Genero" formControlName="genero">
+            <mat-error *ngIf="addressForm.controls['edad'].hasError('required')">
+              El genero es <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class = "row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Email" formControlName="correo">
+            <mat-error *ngIf="addressForm.controls['correo'].hasError('required') || addressForm.controls['correo'].hasError('email')">
+              El correo es <strong>requerido</strong> o debe ser un correo valido. Ej: "Jhon@gmail.com"
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-radio-group formControlName="roles">
+            <mat-radio-button value="Admin">Administrador</mat-radio-button>
+            <mat-radio-button value="Docente">Docente</mat-radio-button>
+            <mat-radio-button value="Estudiante">Estudiante</mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">Enviar</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
