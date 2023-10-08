@@ -1,0 +1,22 @@
+<form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
+    <mat-card class="shipping-card">
+        <mat-card-header>
+            <mat-card-title>Formulario Area</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Descripcion de Area" formControlName="nombre">
+                        <mat-error *ngIf="addressForm.controls['nombre'].hasError('required')">
+                            La descipcion de Area es <strong>requerida</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" type="submit">Enviar</button>
+        </mat-card-actions>
+    </mat-card>
+</form>

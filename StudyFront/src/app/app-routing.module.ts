@@ -12,7 +12,14 @@ import { PreguntaComponent } from './Componentes/pregunta/pregunta.component';
 import { RolPermisoComponent } from './Componentes/rol-permiso/rol-permiso.component';
 import { TemaComponent } from './Componentes/tema/tema.component';
 import { ModuloComponent } from './Componentes/modulo/modulo.component';
+import { FormUsuarioComponent } from './Componentes/Forms/form-usuario/form-usuario.component';
+import { FormRolComponent } from './Componentes/Forms/form-rol/form-rol.component';
+import { FormPruebaComponent } from './Componentes/Forms/form-prueba/form-prueba.component';
+import { FormAreaComponent } from './Componentes/Forms/form-area/form-area.component';
+import { FormEstadisticaComponent } from './Componentes/Forms/form-estadistica/form-estadistica.component';
+import { FormIngresoComponent } from './Componentes/Forms/form-ingreso/form-ingreso.component';
 import { FormPersonaComponent } from './Componentes/Forms/form-persona/form-persona.component';
+
 
 const routes: Routes = [
   { path: "Usuarios", component: UsuarioComponent },
@@ -27,8 +34,14 @@ const routes: Routes = [
   { path: "Rol-Permiso", component: RolPermisoComponent },
   { path: "Temas", component: TemaComponent },
   { path: "Modulos", component: ModuloComponent },
+  { path: "FormUsuarios", component: FormUsuarioComponent },
+  { path: "FormRoles", component: FormRolComponent },
+  { path: "FormPruebas", component: FormPruebaComponent },
+  { path: "FormAreas", component: FormAreaComponent },
+  { path: "FormEstadisticas", component: FormEstadisticaComponent },
+  { path: "FormIngresos", component: FormIngresoComponent },
   { path: "FormPersonas", component: FormPersonaComponent },
-
+  
 ];
 
 @NgModule({

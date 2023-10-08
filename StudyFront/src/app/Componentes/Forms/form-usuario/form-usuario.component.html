@@ -1,0 +1,50 @@
+<form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
+    <mat-card class="shipping-card">
+        <mat-card-header>
+            <mat-card-title>Formulario Usuario</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <!-- <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="IdPersona" formControlName="idpersona">
+                        <mat-error *ngIf="addressForm.controls['idpersona'].hasError('required')">
+                            El Id Persona es <strong>requerido</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div> -->
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Nickname" formControlName="nickname">
+                        <mat-error *ngIf="addressForm.controls['nickname'].hasError('required')">
+                            El Nickname es <strong>requerido</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Contraseña" formControlName="contraseña" type="password">
+                        <mat-error *ngIf="addressForm.controls['contraseña'].hasError('required')">
+                            La Contraseña es <strong>requerida</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Confirmar Contraseña" formControlName="contraseña" type="password">
+                        <mat-error *ngIf="addressForm.controls['contraseña'].hasError('required')">
+                            La Contraseña es <strong>requerida</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" type="submit">Enviar</button>
+        </mat-card-actions>
+    </mat-card>
+</form>

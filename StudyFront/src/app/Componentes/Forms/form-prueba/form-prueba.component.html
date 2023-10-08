@@ -1,0 +1,71 @@
+<form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
+    <mat-card class="shipping-card">
+        <mat-card-header>
+            <mat-card-title>Formulario Prueba</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Duracion" formControlName="duracion" type="number">
+                        <mat-error *ngIf="addressForm.controls['duracion'].hasError('required')">
+                            La Duracion es <strong>requerida</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Cantidad Preguntas" formControlName="cantidadpreguntas"
+                            type="number">
+                        <mat-error *ngIf="addressForm.controls['cantidadpreguntas'].hasError('required')">
+                            La Cantidad de Preguntas es <strong>requerida</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Calificacion" formControlName="calificacion">
+                        <mat-error *ngIf="addressForm.controls['calificacion'].hasError('required')">
+                            La Calificacion es <strong>requerida</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Fecha Prueba" formControlName="fechaprueba" type="datetime">
+                        <mat-error *ngIf="addressForm.controls['fechaprueba'].hasError('required')">
+                            La Fecha es <strong>requerida</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <mat-label>Áreas</mat-label>
+                        <mat-select formControlName="Areas" placeholder="Selecciona un área">
+                            <mat-option value="Matematicas">Matemáticas</mat-option>
+                            <mat-option value="Ciencias">Ciencias</mat-option>
+                            <mat-option value="Historia">Historia</mat-option>
+                            <mat-option value="Literatura">Literatura</mat-option>
+                            <mat-option value="Fisica">Fisica</mat-option>
+                            <mat-option value="Quimica">Quimica</mat-option>
+                            <mat-option value="Biologia">Biologia</mat-option>
+                            <mat-option value="Arte">Arte</mat-option>
+                            <mat-option value="Geografia">Geografia</mat-option>
+                            <mat-option value="Musica">Musica</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="addressForm.controls['area'].hasError('required')">
+                            El área es <strong>requerida</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" type="submit">Enviar</button>
+        </mat-card-actions>
+    </mat-card>
+</form>

@@ -41,8 +41,13 @@ import { MatTreeModule } from '@angular/material/tree';
 import { DragDropComponent } from './Componentes/drag-drop/drag-drop.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { AvatarModule } from 'ngx-avatars';
+import { FormUsuarioComponent } from './Componentes/Forms/form-usuario/form-usuario.component';
+import { FormRolComponent } from './Componentes/Forms/form-rol/form-rol.component';
+import { FormPruebaComponent } from './Componentes/Forms/form-prueba/form-prueba.component';
+import { FormAreaComponent } from './Componentes/Forms/form-area/form-area.component';
+import { FormEstadisticaComponent } from './Componentes/Forms/form-estadistica/form-estadistica.component';
+import { FormIngresoComponent } from './Componentes/Forms/form-ingreso/form-ingreso.component';
 import { FormPersonaComponent } from './Componentes/Forms/form-persona/form-persona.component';
-
 
 @NgModule({
   declarations: [
@@ -65,6 +70,12 @@ import { FormPersonaComponent } from './Componentes/Forms/form-persona/form-pers
     DashboardComponent,
     TreeComponent,
     DragDropComponent,
+    FormUsuarioComponent,
+    FormRolComponent,
+    FormPruebaComponent,
+    FormAreaComponent,
+    FormEstadisticaComponent,
+    FormIngresoComponent,
     FormPersonaComponent
   ],
   imports: [
