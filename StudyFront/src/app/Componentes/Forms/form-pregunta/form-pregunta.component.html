@@ -1,0 +1,66 @@
+<form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>Form preguntas</mat-card-title>
+    </mat-card-header>
+    <br>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Tema" formControlName="Tema">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <textarea matInput placeholder="Enunciado" formControlName="Enunciado"></textarea>
+            <mat-error *ngIf="addressForm.controls['Enunciado'].hasError('required')">
+              El enunciado es <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Respuesta" formControlName="Respuesta" required>
+            <mat-error *ngIf="addressForm.controls['Respuesta'].hasError('required')">
+              La respuesta es <strong>requerida</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="OpcionA" formControlName="OpcionA" required>
+            <mat-error *ngIf="addressForm.controls['OpcionA'].hasError('required')">
+              La respuesta A es <strong>requerida</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="OpcionB" formControlName="OpcionB" required>
+            <mat-error *ngIf="addressForm.controls['OpcionB'].hasError('required')">
+              La respuesta B es <strong>requerida</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="OpcionC" formControlName="OpcionC" required>
+            <mat-error *ngIf="addressForm.controls['OpcionC'].hasError('required')">
+              La respuesta C es <strong>requerida</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">Enviar</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

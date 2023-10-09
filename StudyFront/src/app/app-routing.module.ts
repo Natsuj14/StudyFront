@@ -19,6 +19,11 @@ import { FormAreaComponent } from './Componentes/Forms/form-area/form-area.compo
 import { FormEstadisticaComponent } from './Componentes/Forms/form-estadistica/form-estadistica.component';
 import { FormIngresoComponent } from './Componentes/Forms/form-ingreso/form-ingreso.component';
 import { FormPersonaComponent } from './Componentes/Forms/form-persona/form-persona.component';
+import { FormMateriaComponent } from './Componentes/Forms/form-materia/form-materia.component';
+import { FormPreguntaComponent } from './Componentes/Forms/form-pregunta/form-pregunta.component';
+import { FormRolPermisoComponent } from './Componentes/Forms/form-rol-permiso/form-rol-permiso.component';
+import { FormModuloComponent } from './Componentes/Forms/form-modulo/form-modulo.component';
+import { FormTemaComponent } from './Componentes/Forms/form-tema/form-tema.component';
 
 
 const routes: Routes = [
@@ -41,6 +46,11 @@ const routes: Routes = [
   { path: "FormEstadisticas", component: FormEstadisticaComponent },
   { path: "FormIngresos", component: FormIngresoComponent },
   { path: "FormPersonas", component: FormPersonaComponent },
+  { path: "FormMaterias", component: FormMateriaComponent },
+  { path: "FormPreguntas", component: FormPreguntaComponent },
+  { path: "FormRolPermisos", component: FormRolPermisoComponent },
+  { path: "FormModulos", component: FormModuloComponent },
+  { path: "FormTema", component: FormTemaComponent }
   
 ];
 

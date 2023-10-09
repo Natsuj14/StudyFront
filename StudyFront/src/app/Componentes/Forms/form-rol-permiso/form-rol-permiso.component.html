@@ -1,0 +1,75 @@
+<form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>Form rol-permiso</mat-card-title>
+    </mat-card-header>
+    <br> 
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="rol" formControlName="rol">
+            <mat-error *ngIf="addressForm.controls['rol'].hasError('required')">
+              El rol es <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="modulo" formControlName="modulo">
+            <mat-error *ngIf="addressForm.controls['modulo'].hasError('required')">
+              El modulo es <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="permiso Get" formControlName="permisoGet">
+            <mat-error *ngIf="addressForm.controls['permisoGet'].hasError('required')">
+              El permiso Get es <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="permiso Post" formControlName="permisoPost">
+            <mat-error *ngIf="addressForm.controls['permisoPost'].hasError('required')">
+              El permiso Post es <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="permiso Delete" formControlName="permisoDelete">
+            <mat-error *ngIf="addressForm.controls['permisoDelete'].hasError('required')">
+              El permiso Delete es <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="permiso Put" formControlName="permisoPut">
+            <mat-error *ngIf="addressForm.controls['permisoPut'].hasError('required')">
+              El permiso Put es <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="permiso Get By Id" formControlName="permisoGetById">
+            <mat-error *ngIf="addressForm.controls['permisoGetById'].hasError('required')">
+              El permiso GetById es <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">Enviar</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
