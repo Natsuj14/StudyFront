@@ -42,6 +42,11 @@ import { DragDropComponent } from './Componentes/drag-drop/drag-drop.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { AvatarModule } from 'ngx-avatars';
 import { FormPersonaComponent } from './Componentes/Forms/form-persona/form-persona.component';
+import { FormMateriaComponent } from './Componentes/Forms/form-materia/form-materia.component';
+import { FormPreguntaComponent } from './Componentes/Forms/form-pregunta/form-pregunta.component';
+import { FormRolPermisoComponent } from './Componentes/Forms/form-rol-permiso/form-rol-permiso.component';
+import { FormTemaComponent } from './Componentes/Forms/form-tema/form-tema.component';
+import { FormModuloComponent } from './Componentes/Forms/form-modulo/form-modulo.component';
 
 
 @NgModule({
@@ -65,7 +70,12 @@ import { FormPersonaComponent } from './Componentes/Forms/form-persona/form-pers
     DashboardComponent,
     TreeComponent,
     DragDropComponent,
-    FormPersonaComponent
+    FormPersonaComponent,
+    FormMateriaComponent,
+    FormPreguntaComponent,
+    FormRolPermisoComponent,
+    FormTemaComponent,
+    FormModuloComponent
   ],
   imports: [
     HttpClientModule,

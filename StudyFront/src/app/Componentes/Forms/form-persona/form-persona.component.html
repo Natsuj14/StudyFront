@@ -7,7 +7,7 @@
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="Nombre" formControlName="nombre">
+            <input matInput placeholder="Nombre" formControlName="nombre" required>
             <mat-error *ngIf="addressForm.controls['nombre'].hasError('required')">
               El nombre es <strong>requerido</strong>
             </mat-error>
@@ -32,7 +32,7 @@
           </mat-form-field>
         </div>
         <div class="col">
-          <mat-form-field class="full-width">
+          <mat-form-field class="full-width" >
             <input matInput placeholder="Genero" formControlName="genero">
             <mat-error *ngIf="addressForm.controls['edad'].hasError('required')">
               El genero es <strong>requerido</strong>
