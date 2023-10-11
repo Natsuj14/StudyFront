@@ -53,6 +53,8 @@ import { FormPreguntaComponent } from './Componentes/Forms/form-pregunta/form-pr
 import { FormRolPermisoComponent } from './Componentes/Forms/form-rol-permiso/form-rol-permiso.component';
 import { FormTemaComponent } from './Componentes/Forms/form-tema/form-tema.component';
 import { FormModuloComponent } from './Componentes/Forms/form-modulo/form-modulo.component';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 @NgModule({
   declarations: [
@@ -110,7 +112,8 @@ import { FormModuloComponent } from './Componentes/Forms/form-modulo/form-modulo
     MatMenuModule,
     MatTreeModule,
     DragDropModule,
-    AvatarModule
+    AvatarModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

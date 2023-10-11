@@ -1,8 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ApiService } from 'src/app/Services/api.service';
+import { FormPersonaComponent } from '../Forms/form-persona/form-persona.component';
+
 
 @Component({
   selector: 'app-persona',
@@ -16,11 +19,16 @@ export class PersonaComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   dataSource: MatTableDataSource<any>;
-
-
-  constructor(public api: ApiService) {
+ 
+  constructor(public api: ApiService, public dialog: MatDialog) {
     this.dataSource = new MatTableDataSource();
   }
+
+openDialog(){
+  this.dialog.open(FormPersonaComponent,{
+  })
+}
+
   ngOnInit(): void {
     this.api.GET("Persona").then((res) => {
       for (let index = 0; index < res.length; index++) {

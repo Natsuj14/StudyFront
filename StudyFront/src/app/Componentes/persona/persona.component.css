@@ -29,4 +29,7 @@
   th.mat-header-cell {
     padding: 8px 16px; /* Ajustar el espacio interno de las celdas del encabezado */
   }
-  
+  .crear{
+    padding: 10px;
+    background-color: #3F51B5;
+  }
