@@ -21,7 +21,7 @@ export class FormPersonaComponent {
     correo: [null, [Validators.required, Validators.email]],
     edad: [null, [Validators.required, Validators.pattern(/^\d+$/)]],
     genero: [null, Validators.required],
-    cedula: [null, Validators.required],
+    cedula: [null, [Validators.required, Validators.pattern(/^\d+$/)]],
 
 
   });

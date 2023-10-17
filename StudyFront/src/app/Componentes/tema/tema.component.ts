@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ApiService } from 'src/app/Services/api.service';
+import { FormTemaComponent } from '../Forms/form-tema/form-tema.component';
 
 @Component({
   selector: 'app-tema',
@@ -17,9 +19,14 @@ export class TemaComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   dataSource: MatTableDataSource<any>;
 
-  constructor(public api: ApiService) {
+  constructor(public api: ApiService, public dialog: MatDialog) {
     this.dataSource = new MatTableDataSource();
 
+  }
+
+  openDialog(){
+    this.dialog.open(FormTemaComponent,{
+    })
   }
 
   ngOnInit(): void {

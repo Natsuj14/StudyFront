@@ -11,6 +11,9 @@
             <mat-error *ngIf="addressFormPersona.controls['cedula'].hasError('required')">
               La cedula es <strong>requerida</strong>
             </mat-error>
+            <mat-error *ngIf="addressFormPersona.controls['cedula'].hasError('pattern')">
+              Ingrese solo <strong>numeros</strong>
+            </mat-error>
           </mat-form-field>
         </div>
       </div>

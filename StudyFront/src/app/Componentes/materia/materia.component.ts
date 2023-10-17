@@ -1,8 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ApiService } from 'src/app/Services/api.service';
+import { FormPersonaComponent } from '../Forms/form-persona/form-persona.component';
+import { FormMateriaComponent } from '../Forms/form-materia/form-materia.component';
 
 @Component({
   selector: 'app-materia',
@@ -17,9 +20,14 @@ export class MateriaComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   dataSource: MatTableDataSource<any>;
 
-  constructor(public api: ApiService) {
+  constructor(public api: ApiService, public dialog: MatDialog) {
     this.dataSource = new MatTableDataSource();
 
+  }
+
+  openDialog(){
+    this.dialog.open(FormMateriaComponent,{
+    })
   }
 
   ngOnInit(): void {

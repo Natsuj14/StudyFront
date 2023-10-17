@@ -1,4 +1,4 @@
-<form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
+<form [formGroup]="addressFormTema" novalidate (ngSubmit)="onSubmit()">
   <mat-card class="shipping-card">
     <mat-card-header>
       <mat-card-title>Form tema</mat-card-title>
@@ -9,7 +9,7 @@
         <div class="col">
           <mat-form-field class="full-width">
             <input matInput placeholder="Materia" formControlName="materia" required>
-            <mat-error *ngIf="addressForm.controls['materia'].hasError('required')">
+            <mat-error *ngIf="addressFormTema.controls['materia'].hasError('required')">
               La materia es <strong>requerida</strong>
             </mat-error>
           </mat-form-field>
@@ -17,7 +17,7 @@
         <div class="col">
           <mat-form-field class="full-width">
             <input matInput placeholder="Nombre" formControlName="nombre">
-            <mat-error *ngIf="addressForm.controls['nombre'].hasError('required')">
+            <mat-error *ngIf="addressFormTema.controls['nombre'].hasError('required')">
               El nombre es <strong>requerido</strong>
             </mat-error>
           </mat-form-field>
@@ -27,7 +27,7 @@
         <div class="col">
           <mat-form-field class="full-width">
             <input matInput placeholder="Contenido" formControlName="contenido">
-            <mat-error *ngIf="addressForm.controls['contenido'].hasError('required')">
+            <mat-error *ngIf="addressFormTema.controls['contenido'].hasError('required')">
               El contenido es <strong>requerido</strong>
             </mat-error>
           </mat-form-field>
@@ -35,7 +35,7 @@
       </div>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="primary" type="submit">Enviar</button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!addressFormTema.valid">Enviar</button>
     </mat-card-actions>
   </mat-card>
 </form>
