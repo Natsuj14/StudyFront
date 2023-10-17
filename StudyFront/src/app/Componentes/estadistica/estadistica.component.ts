@@ -3,6 +3,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ApiService } from 'src/app/Services/api.service';
+import { FormEstadisticaComponent } from '../Forms/form-estadistica/form-estadistica.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-estadistica',
@@ -16,13 +18,16 @@ export class EstadisticaComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   dataSource: MatTableDataSource<any>;
 
-  Titulo = "Estadistica";
-  constructor(public api: ApiService) {
-
+  constructor(public api: ApiService, public dialog: MatDialog) {
     this.dataSource = new MatTableDataSource;
-
+  }
+  
+  openDialog(){
+    this.dialog.open(FormEstadisticaComponent,{
+    })
   }
 
+  Titulo = "Estadistica";
   ngOnInit(): void {
     this.api.GET("Estadisticas").then((res) => {
 

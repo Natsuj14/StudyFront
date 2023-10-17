@@ -3,6 +3,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ApiService } from 'src/app/Services/api.service';
+import { FormUsuarioComponent } from '../Forms/form-usuario/form-usuario.component';
+import { MatDialog } from '@angular/material/dialog';
+import { FormIngresoComponent } from '../Forms/form-ingreso/form-ingreso.component';
 
 @Component({
   selector: 'app-ingreso',
@@ -11,16 +14,21 @@ import { ApiService } from 'src/app/Services/api.service';
 })
 
 export class IngresoComponent implements OnInit {
+
+  Titulo = "Ingresos";
+
   displayedColumns: string[] = [];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   dataSource: MatTableDataSource<any>;
 
-  Titulo = "Ingresos";
-  constructor(public api: ApiService) {
-
+  constructor(public api:ApiService, public dialog: MatDialog) {
     this.dataSource = new MatTableDataSource;
+  }
 
+  openDialog(){
+    this.dialog.open(FormIngresoComponent,{
+    })
   }
 
   ngOnInit(): void {

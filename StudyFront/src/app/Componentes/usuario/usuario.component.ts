@@ -3,6 +3,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ApiService } from 'src/app/Services/api.service';
+import { MatDialog } from '@angular/material/dialog';
+import { FormUsuarioComponent } from '../Forms/form-usuario/form-usuario.component';
 
 export class IconOverviewExample {}
 
@@ -14,15 +16,20 @@ export class IconOverviewExample {}
 
 export class UsuarioComponent implements OnInit {
 
+  Titulo = "Usuarios";
+
   displayedColumns: string[] = [];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   dataSource: MatTableDataSource<any>;
-  Titulo = "Usuarios";
-  constructor(public api:ApiService) {
-
+  
+  constructor(public api:ApiService, public dialog: MatDialog) {
     this.dataSource = new MatTableDataSource;
+  }
 
+  openDialog(){
+    this.dialog.open(FormUsuarioComponent,{
+    })
   }
 
   ngOnInit(): void {
