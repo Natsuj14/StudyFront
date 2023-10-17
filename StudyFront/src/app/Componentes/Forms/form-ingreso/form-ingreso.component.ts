@@ -3,11 +3,6 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { IngresosModels } from 'src/app/Models/IngresosModels';
 import { ApiService } from 'src/app/Services/api.service';
 import Swal from 'sweetalert2';
-import { MatInputModule } from '@angular/material/input';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
-import { MatButtonModule } from '@angular/material/button';
-
 
 @Component({
   selector: 'app-form-ingreso',

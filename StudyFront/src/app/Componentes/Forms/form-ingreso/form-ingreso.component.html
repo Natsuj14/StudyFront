@@ -15,29 +15,18 @@
                     </mat-form-field>
                 </div>
             </div>
-            <!-- <div class="row">
+            <div class="row">
                 <div class="col">
                     <mat-form-field class="full-width">
-                        <input matInput placeholder="Fecha Ingreso" formControlName="fecha" type="datetime-local">
+                        <input matInput [matDatepicker]="picker" placeholder="Fecha Ingreso" formControlName="fecha">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
                         <mat-error *ngIf="addressFormIngreso.controls['fecha'].hasError('required')">
                             La Fecha de Ingreso es <strong>requerida</strong>
                         </mat-error>
                     </mat-form-field>
                 </div>
-            </div> -->
-            <div class="row">
-                <div class="col">
-                  <mat-form-field class="full-width">
-                    <input matInput [matDatepicker]="picker" placeholder="Fecha Ingreso" formControlName="fecha">
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                    <mat-error *ngIf="addressFormIngreso.controls['fecha'].hasError('required')">
-                      La Fecha de Ingreso es <strong>requerida</strong>
-                    </mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-              
+            </div>
             <div class="row">
                 <div class="col">
                     <mat-form-field class="full-width">
@@ -50,9 +39,8 @@
             </div>
         </mat-card-content>
         <mat-card-actions>
-            <button mat-raised-button color="primary" type="submit" [disabled]="!addressFormIngreso.valid">Enviar</button>
+            <button mat-raised-button color="primary" type="submit"
+                [disabled]="!addressFormIngreso.valid">Enviar</button>
         </mat-card-actions>
-
-        <input type="datetime-local">
     </mat-card>
 </form>
