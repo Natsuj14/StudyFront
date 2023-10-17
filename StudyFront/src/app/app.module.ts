@@ -54,6 +54,8 @@ import { FormRolPermisoComponent } from './Componentes/Forms/form-rol-permiso/fo
 import { FormTemaComponent } from './Componentes/Forms/form-tema/form-tema.component';
 import { FormModuloComponent } from './Componentes/Forms/form-modulo/form-modulo.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -113,7 +115,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatTreeModule,
     DragDropModule,
     AvatarModule,
-    MatDialogModule
+    MatDialogModule,
+    MatNativeDateModule,
+    MatDatepickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

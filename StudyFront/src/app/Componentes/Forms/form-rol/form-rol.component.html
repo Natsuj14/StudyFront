@@ -1,4 +1,4 @@
-<form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
+<form [formGroup]="addressFormRol" novalidate (ngSubmit)="onSubmit()">
     <mat-card class="shipping-card">
         <mat-card-header>
             <mat-card-title>Formulario Rol</mat-card-title>
@@ -8,8 +8,8 @@
             <div class="row">
                 <div class="col">
                     <mat-form-field class="full-width">
-                        <input matInput placeholder="Descrpcion" formControlName="descripcion">
-                        <mat-error *ngIf="addressForm.controls['descripcion'].hasError('required')">
+                        <input matInput placeholder="Descripcion" formControlName="descripcionRol">
+                        <mat-error *ngIf="addressFormRol.controls['descripcionRol'].hasError('required')">
                             La descipcion es <strong>requerida</strong>
                         </mat-error>
                     </mat-form-field>
@@ -17,7 +17,8 @@
             </div>
         </mat-card-content>
         <mat-card-actions>
-            <button mat-raised-button color="primary" type="submit">Enviar</button>
+            <button mat-raised-button color="primary" type="submit"
+                [disabled]="!addressFormRol.valid">Enviar</button>
         </mat-card-actions>
     </mat-card>
 </form>

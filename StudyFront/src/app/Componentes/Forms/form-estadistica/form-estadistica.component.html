@@ -1,4 +1,4 @@
-<form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
+<form [formGroup]="addressFormEstadistica" novalidate (ngSubmit)="onSubmit()">
     <mat-card class="shipping-card">
         <mat-card-header>
             <mat-card-title>Formulario Estadistica</mat-card-title>
@@ -8,8 +8,18 @@
             <div class="row">
                 <div class="col">
                     <mat-form-field class="full-width">
-                        <input matInput placeholder="Total Pruebas" formControlName="totalpruebas" type="number">
-                        <mat-error *ngIf="addressForm.controls['totalpruebas'].hasError('required')">
+                        <input matInput placeholder="Id Usuario" formControlName="idUsuario">
+                        <mat-error *ngIf="addressFormEstadistica.controls['idUsuario'].hasError('required')">
+                            El Id Usuario <strong>requerido</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Total Pruebas" formControlName="totalpruebas">
+                        <mat-error *ngIf="addressFormEstadistica.controls['totalpruebas'].hasError('required')">
                             El total de Pruebas es <strong>requerido</strong>
                         </mat-error>
                     </mat-form-field>
@@ -18,8 +28,8 @@
             <div class="row">
                 <div class="col">
                     <mat-form-field class="full-width">
-                        <input matInput placeholder="Tiempo Pruebas" formControlName="tiempoprueba" type="number">
-                        <mat-error *ngIf="addressForm.controls['tiempoprueba'].hasError('required')">
+                        <input matInput placeholder="Tiempo Pruebas" formControlName="tiempopromedio">
+                        <mat-error *ngIf="addressFormEstadistica.controls['tiempopromedio'].hasError('required')">
                             El tiempo de Pruebas es <strong>requerido</strong>
                         </mat-error>
                     </mat-form-field>
@@ -29,14 +39,14 @@
                 <div class="col">
                     <mat-form-field class="full-width">
                         <input matInput placeholder="Promedio" formControlName="promedio">
-                        <mat-error *ngIf="addressForm.controls['promedio'].hasError('required')">
+                        <mat-error *ngIf="addressFormEstadistica.controls['promedio'].hasError('required')">
                             El promedio es <strong>requerido</strong>
                         </mat-error>
                     </mat-form-field>
                 </div>
             </div>
             <div class="row">
-                <div class="col">
+                <!-- <div class="col">
                     <mat-form-field class="full-width">
                         <mat-label>Mejor Materia</mat-label>
                         <mat-select formControlName="Mejor Materia" placeholder="Selecciona una materia">
@@ -61,13 +71,13 @@
                             <mat-option value="Música Pop">Música Pop</mat-option>
                             <mat-option value="Economía">Economía</mat-option>
                         </mat-select>
-                        <mat-error *ngIf="addressForm.controls['mejormateria'].hasError('required')">
+                        <mat-error *ngIf="addressFormEstadistica.controls['mejormateria'].hasError('required')">
                             La materia es <strong>requerida</strong>
                         </mat-error>
                     </mat-form-field>
-                </div>
-                <div class="col">
-                    <mat-form-field class="full-width">
+                </div> -->
+                <!-- <div class="col"> -->
+                    <!-- <mat-form-field class="full-width">
                         <mat-label>Peor Materia</mat-label>
                         <mat-select formControlName="Peor Materia" placeholder="Selecciona una materia">
                             <mat-option value="Álgebra">Álgebra</mat-option>
@@ -91,7 +101,23 @@
                             <mat-option value="Música Pop">Música Pop</mat-option>
                             <mat-option value="Economía">Economía</mat-option>
                         </mat-select>
-                        <mat-error *ngIf="addressForm.controls['peormateria'].hasError('required')">
+                        <mat-error *ngIf="addressFormEstadistica.controls['peormateria'].hasError('required')">
+                            La materia es <strong>requerida</strong>
+                        </mat-error>
+                    </mat-form-field> -->
+                <!-- </div> -->
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Mejor Materia" formControlName="mejormateria">
+                        <mat-error *ngIf="addressFormEstadistica.controls['mejormateria'].hasError('required')">
+                            La materia es <strong>requerida</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Peor Materia" formControlName="peormateria">
+                        <mat-error *ngIf="addressFormEstadistica.controls['peormateria'].hasError('required')">
                             La materia es <strong>requerida</strong>
                         </mat-error>
                     </mat-form-field>
@@ -99,7 +125,7 @@
             </div>
         </mat-card-content>
         <mat-card-actions>
-            <button mat-raised-button color="primary" type="submit">Enviar</button>
+            <button mat-raised-button color="primary" type="submit" [disabled]="!addressFormEstadistica.valid">Enviar</button>
         </mat-card-actions>
     </mat-card>
 </form>

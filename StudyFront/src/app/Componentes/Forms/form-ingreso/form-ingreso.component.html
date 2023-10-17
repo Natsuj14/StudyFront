@@ -1,25 +1,27 @@
-<form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
+<form [formGroup]="addressFormIngreso" novalidate (ngSubmit)="onSubmit()">
     <mat-card class="shipping-card">
         <mat-card-header>
             <mat-card-title>Formulario Ingresos</mat-card-title>
         </mat-card-header>
         <br>
         <mat-card-content>
-            <!-- <div class="row">
+            <div class="row">
                 <div class="col">
                     <mat-form-field class="full-width">
-                        <input matInput placeholder="Id Usuario" formControlName="idusuario">
-                        <mat-error *ngIf="addressForm.controls['idusuario'].hasError('required')">
+                        <input matInput placeholder="Usuario" formControlName="idusuario">
+                        <mat-error *ngIf="addressFormIngreso.controls['idusuario'].hasError('required')">
                             El Id Usuario es <strong>requerido</strong>
                         </mat-error>
                     </mat-form-field>
                 </div>
-            </div> -->
+            </div>
             <div class="row">
                 <div class="col">
                     <mat-form-field class="full-width">
-                        <input matInput placeholder="Fecha Ingreso" formControlName="fecha" type="datetime">
-                        <mat-error *ngIf="addressForm.controls['fecha'].hasError('required')">
+                        <input matInput [matDatepicker]="picker" placeholder="Fecha Ingreso" formControlName="fecha">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                        <mat-error *ngIf="addressFormIngreso.controls['fecha'].hasError('required')">
                             La Fecha de Ingreso es <strong>requerida</strong>
                         </mat-error>
                     </mat-form-field>
@@ -29,7 +31,7 @@
                 <div class="col">
                     <mat-form-field class="full-width">
                         <input matInput placeholder="Tipo Ingreso" formControlName="tipo">
-                        <mat-error *ngIf="addressForm.controls['tipo'].hasError('required')">
+                        <mat-error *ngIf="addressFormIngreso.controls['tipo'].hasError('required')">
                             El Tipo de Ingreso es <strong>requerido</strong>
                         </mat-error>
                     </mat-form-field>
@@ -37,7 +39,8 @@
             </div>
         </mat-card-content>
         <mat-card-actions>
-            <button mat-raised-button color="primary" type="submit">Enviar</button>
+            <button mat-raised-button color="primary" type="submit"
+                [disabled]="!addressFormIngreso.valid">Enviar</button>
         </mat-card-actions>
     </mat-card>
 </form>

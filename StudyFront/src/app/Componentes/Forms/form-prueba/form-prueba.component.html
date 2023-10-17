@@ -1,4 +1,4 @@
-<form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
+<form [formGroup]="addressFormPrueba" novalidate (ngSubmit)="onSubmit()">
     <mat-card class="shipping-card">
         <mat-card-header>
             <mat-card-title>Formulario Prueba</mat-card-title>
@@ -8,17 +8,26 @@
             <div class="row">
                 <div class="col">
                     <mat-form-field class="full-width">
-                        <input matInput placeholder="Duracion" formControlName="duracion" type="number">
-                        <mat-error *ngIf="addressForm.controls['duracion'].hasError('required')">
+                        <input matInput placeholder="Usuario" formControlName="idUsuario">
+                        <mat-error *ngIf="addressFormPrueba.controls['idUsuario'].hasError('required')">
+                            El Id Usuario es <strong>requerido</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Duracion" formControlName="duracion">
+                        <mat-error *ngIf="addressFormPrueba.controls['duracion'].hasError('required')">
                             La Duracion es <strong>requerida</strong>
                         </mat-error>
                     </mat-form-field>
                 </div>
                 <div class="col">
                     <mat-form-field class="full-width">
-                        <input matInput placeholder="Cantidad Preguntas" formControlName="cantidadpreguntas"
-                            type="number">
-                        <mat-error *ngIf="addressForm.controls['cantidadpreguntas'].hasError('required')">
+                        <input matInput placeholder="Cantidad Preguntas" formControlName="cantidadpreguntas">
+                        <mat-error *ngIf="addressFormPrueba.controls['cantidadpreguntas'].hasError('required')">
                             La Cantidad de Preguntas es <strong>requerida</strong>
                         </mat-error>
                     </mat-form-field>
@@ -28,22 +37,27 @@
                 <div class="col">
                     <mat-form-field class="full-width">
                         <input matInput placeholder="Calificacion" formControlName="calificacion">
-                        <mat-error *ngIf="addressForm.controls['calificacion'].hasError('required')">
+                        <mat-error *ngIf="addressFormPrueba.controls['calificacion'].hasError('required')">
                             La Calificacion es <strong>requerida</strong>
                         </mat-error>
                     </mat-form-field>
                 </div>
-                <div class="col">
-                    <mat-form-field class="full-width">
-                        <input matInput placeholder="Fecha Prueba" formControlName="fechaprueba" type="datetime">
-                        <mat-error *ngIf="addressForm.controls['fechaprueba'].hasError('required')">
-                            La Fecha es <strong>requerida</strong>
-                        </mat-error>
-                    </mat-form-field>
+                <div class="row">
+                    <div class="col">
+                        <mat-form-field class="full-width">
+                            <input matInput [matDatepicker]="picker" placeholder="Fecha Prueba"
+                                formControlName="fechaprueba">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                            <mat-error *ngIf="addressFormPrueba.controls['fechaprueba'].hasError('required')">
+                                La Fecha de Ingreso es <strong>requerida</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col">
+                <!-- <div class="col">
                     <mat-form-field class="full-width">
                         <mat-label>Áreas</mat-label>
                         <mat-select formControlName="Areas" placeholder="Selecciona un área">
@@ -58,15 +72,25 @@
                             <mat-option value="Geografia">Geografia</mat-option>
                             <mat-option value="Musica">Musica</mat-option>
                         </mat-select>
-                        <mat-error *ngIf="addressForm.controls['area'].hasError('required')">
+                        <mat-error *ngIf="addressFormPrueba.controls['area'].hasError('required')">
                             El área es <strong>requerida</strong>
                         </mat-error>
                     </mat-form-field>
+                </div> -->
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Areas" formControlName="idArea">
+                        <mat-error *ngIf="addressFormPrueba.controls['idArea'].hasError('required')">
+                            La Fecha es <strong>requerida</strong>
+                        </mat-error>
+                    </mat-form-field>
                 </div>
+
             </div>
         </mat-card-content>
         <mat-card-actions>
-            <button mat-raised-button color="primary" type="submit">Enviar</button>
+            <button mat-raised-button color="primary" type="submit"
+                [disabled]="!addressFormPrueba.valid">Enviar</button>
         </mat-card-actions>
     </mat-card>
 </form>

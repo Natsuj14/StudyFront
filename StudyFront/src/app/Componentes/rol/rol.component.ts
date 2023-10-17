@@ -3,6 +3,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ApiService } from 'src/app/Services/api.service';
+import { MatDialog } from '@angular/material/dialog';
+import { FormRolComponent } from '../Forms/form-rol/form-rol.component';
 
 @Component({
   selector: 'app-rol',
@@ -11,16 +13,21 @@ import { ApiService } from 'src/app/Services/api.service';
 })
 
 export class RolComponent implements OnInit {
+
+  Titulo = "Roles";
+  
   displayedColumns: string[] = [];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   dataSource: MatTableDataSource<any>;
 
-  Titulo = "Roles";
-  constructor(public api: ApiService) {
-
+  constructor(public api: ApiService, public dialog: MatDialog) {
     this.dataSource = new MatTableDataSource;
-
+  }
+  
+  openDialog(){
+    this.dialog.open(FormRolComponent,{
+    })
   }
 
   ngOnInit(): void {
