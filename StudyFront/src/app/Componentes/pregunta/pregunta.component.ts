@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ApiService } from 'src/app/Services/api.service';
 import { FormPreguntaComponent } from '../Forms/form-pregunta/form-pregunta.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-pregunta',
@@ -56,6 +57,29 @@ export class PreguntaComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+  async eliminarPregunta(Preguntas: any) {
+    try{
+    await this.api.delete("Preguntas", Preguntas.idPregunta);
+
+        const result = await Swal.fire({
+          title: 'Dato eliminado',
+          text: 'Se elimino el campo exitosamente',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        });
+        if (result.isConfirmed) {
+          window.location.reload();
+        }
+
+    } catch (error) {
+      Swal.fire(
+        'Error al borrar los datos',
+        'Por intente de nuevo',
+        'error'
+      );
+    }
+    
   }
 }
 

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpClientXsrfModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +24,12 @@ export class ApiService {
   }
 
   public async delete(controller: String, Id: string) {
-    return this.api.delete(this.Url + controller + "/" + Id);
+    var result: any;
+    await this.api.delete(this.Url + controller + "/" + Id).toPromise().then((res =>{
+      console.log(res);
+      result = res;
+    }))
+    return result;
   }
 
   public async create(controller: String, body: any) {

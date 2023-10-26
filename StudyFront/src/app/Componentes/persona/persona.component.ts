@@ -19,15 +19,15 @@ export class PersonaComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   dataSource: MatTableDataSource<any>;
- 
+
   constructor(public api: ApiService, public dialog: MatDialog) {
     this.dataSource = new MatTableDataSource();
   }
 
-openDialog(){
-  this.dialog.open(FormPersonaComponent,{
-  })
-}
+  openDialog() {
+    this.dialog.open(FormPersonaComponent, {
+    })
+  }
 
   ngOnInit(): void {
     this.api.GET("Persona").then((res) => {

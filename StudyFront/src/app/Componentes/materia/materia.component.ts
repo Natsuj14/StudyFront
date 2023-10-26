@@ -61,4 +61,23 @@ export class MateriaComponent implements OnInit {
     }
   }
 
+  editarMateria(materia: any) {
+  //
+}
+
+eliminarMateria(materia: any) {
+  console.log(materia.idMateria);
+  try {
+    this.api.delete("Materia", materia.idMateria).then((res) => {
+      console.log(res);
+    }).catch((error) => {
+      console.error("Error al eliminar la materia", error);
+    });
+  } catch (e) {
+    console.log("error error");
+  }
+}
+
+
+
 }

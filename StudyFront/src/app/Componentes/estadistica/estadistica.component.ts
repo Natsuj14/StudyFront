@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ApiService } from 'src/app/Services/api.service';
 import { FormEstadisticaComponent } from '../Forms/form-estadistica/form-estadistica.component';
 import { MatDialog } from '@angular/material/dialog';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-estadistica',
@@ -60,5 +61,28 @@ export class EstadisticaComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+  async eliminarEstadistica(Estadistica: any) {
+    try{
+    await this.api.delete("Estadisticas", Estadistica.idEstadistica);
+
+        const result = await Swal.fire({
+          title: 'Dato eliminado',
+          text: 'Se elimino el campo exitosamente',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        });
+        if (result.isConfirmed) {
+          window.location.reload();
+        }
+
+    } catch (error) {
+      Swal.fire(
+        'Error al borrar los datos',
+        'Por intente de nuevo',
+        'error'
+      );
+    }
+    
   }
 }
