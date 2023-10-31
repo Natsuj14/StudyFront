@@ -6,6 +6,7 @@ import { ApiService } from 'src/app/Services/api.service';
 import { FormUsuarioComponent } from '../Forms/form-usuario/form-usuario.component';
 import { MatDialog } from '@angular/material/dialog';
 import { FormIngresoComponent } from '../Forms/form-ingreso/form-ingreso.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-ingreso',
@@ -64,4 +65,39 @@ export class IngresoComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+
+  async eliminarIngreso(Ingreso: any) {
+    console.log(Ingreso.idIngreso);
+    const result = await Swal.fire({
+      title: '¿Desea confirmar?',
+      text: '¿Desea borrar el dato definitivamente?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, borrar',
+      cancelButtonText: 'Cancelar'
+    });
+  
+    if (result.isConfirmed) {
+      try {
+        await this.api.delete("Ingreso", Ingreso.idIngreso);
+  
+        await Swal.fire({
+          title: 'Dato eliminado',
+          text: 'Se eliminó el campo exitosamente',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        });
+  
+        window.location.reload();
+  
+      } catch (error) {
+        Swal.fire(
+          'Error al borrar los datos',
+          'Por favor, inténtelo de nuevo',
+          'error'
+        );
+      }
+    }
+  }
+  
 }

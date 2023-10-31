@@ -59,27 +59,36 @@ export class PreguntaComponent implements OnInit {
     }
   }
   async eliminarPregunta(Preguntas: any) {
-    try{
-    await this.api.delete("Preguntas", Preguntas.idPregunta);
-
-        const result = await Swal.fire({
+    const result = await Swal.fire({
+      title: '¿Desea confirmar?',
+      text: '¿Desea borrar el dato definitivamente?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, borrar',
+      cancelButtonText: 'Cancelar'
+    });
+  
+    if (result.isConfirmed) {
+      try {
+        await this.api.delete("Preguntas", Preguntas.idPreguntas);
+  
+        await Swal.fire({
           title: 'Dato eliminado',
-          text: 'Se elimino el campo exitosamente',
+          text: 'Se eliminó el campo exitosamente',
           icon: 'success',
           confirmButtonText: 'OK'
         });
-        if (result.isConfirmed) {
-          window.location.reload();
-        }
-
-    } catch (error) {
-      Swal.fire(
-        'Error al borrar los datos',
-        'Por intente de nuevo',
-        'error'
-      );
+  
+        window.location.reload();
+  
+      } catch (error) {
+        Swal.fire(
+          'Error al borrar los datos',
+          'Por favor, inténtelo de nuevo',
+          'error'
+        );
+      }
     }
-    
   }
 }
 

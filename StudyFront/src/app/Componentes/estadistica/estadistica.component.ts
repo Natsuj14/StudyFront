@@ -22,9 +22,9 @@ export class EstadisticaComponent implements OnInit {
   constructor(public api: ApiService, public dialog: MatDialog) {
     this.dataSource = new MatTableDataSource;
   }
-  
-  openDialog(){
-    this.dialog.open(FormEstadisticaComponent,{
+
+  openDialog() {
+    this.dialog.open(FormEstadisticaComponent, {
     })
   }
 
@@ -63,26 +63,36 @@ export class EstadisticaComponent implements OnInit {
     }
   }
   async eliminarEstadistica(Estadistica: any) {
-    try{
-    await this.api.delete("Estadisticas", Estadistica.idEstadistica);
+    const result = await Swal.fire({
+      title: '¿Desea confirmar?',
+      text: '¿Desea borrar el dato definitivamente?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, borrar',
+      cancelButtonText: 'Cancelar'
+    });
 
-        const result = await Swal.fire({
+    if (result.isConfirmed) {
+      try {
+        await this.api.delete("Estadistica", Estadistica.idEstadistica);
+
+        await Swal.fire({
           title: 'Dato eliminado',
-          text: 'Se elimino el campo exitosamente',
+          text: 'Se eliminó el campo exitosamente',
           icon: 'success',
           confirmButtonText: 'OK'
         });
-        if (result.isConfirmed) {
-          window.location.reload();
-        }
 
-    } catch (error) {
-      Swal.fire(
-        'Error al borrar los datos',
-        'Por intente de nuevo',
-        'error'
-      );
+        window.location.reload();
+
+      } catch (error) {
+        Swal.fire(
+          'Error al borrar los datos',
+          'Por favor, inténtelo de nuevo',
+          'error'
+        );
+      }
     }
-    
   }
+
 }

@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ApiService } from 'src/app/Services/api.service';
 import { FormPersonaComponent } from '../Forms/form-persona/form-persona.component';
 import { FormMateriaComponent } from '../Forms/form-materia/form-materia.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-materia',
@@ -25,8 +26,8 @@ export class MateriaComponent implements OnInit {
 
   }
 
-  openDialog(){
-    this.dialog.open(FormMateriaComponent,{
+  openDialog() {
+    this.dialog.open(FormMateriaComponent, {
     })
   }
 
@@ -62,22 +63,41 @@ export class MateriaComponent implements OnInit {
   }
 
   editarMateria(materia: any) {
-  //
-}
-
-eliminarMateria(materia: any) {
-  console.log(materia.idMateria);
-  try {
-    this.api.delete("Materia", materia.idMateria).then((res) => {
-      console.log(res);
-    }).catch((error) => {
-      console.error("Error al eliminar la materia", error);
-    });
-  } catch (e) {
-    console.log("error error");
+    //
   }
-}
 
-
+  async eliminarMateria(Materia: any) {
+    console.log(Materia.idMateria);
+    const result = await Swal.fire({
+      title: '¿Desea confirmar?',
+      text: '¿Desea borrar el dato definitivamente?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, borrar',
+      cancelButtonText: 'Cancelar'
+    });
+  
+    if (result.isConfirmed) {
+      try {
+        await this.api.delete("Materia", Materia.idMateria);
+  
+        await Swal.fire({
+          title: 'Dato eliminado',
+          text: 'Se eliminó el campo exitosamente',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        });
+  
+        window.location.reload();
+  
+      } catch (error) {
+        Swal.fire(
+          'Error al borrar los datos',
+          'Por favor, inténtelo de nuevo',
+          'error'
+        );
+      }
+    }
+  }
 
 }

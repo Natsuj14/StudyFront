@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ApiService } from 'src/app/Services/api.service';
 import { FormPruebaComponent } from '../Forms/form-prueba/form-prueba.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-prueba',
@@ -63,4 +64,39 @@ export class PruebaComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+
+  async eliminarPrueba(Prueba: any) {
+    console.log(Prueba.idPruebaa);
+    const result = await Swal.fire({
+      title: '¿Desea confirmar?',
+      text: '¿Desea borrar el dato definitivamente?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, borrar',
+      cancelButtonText: 'Cancelar'
+    });
+  
+    if (result.isConfirmed) {
+      try {
+        await this.api.delete("Prueba", Prueba.idPrueba);
+  
+        await Swal.fire({
+          title: 'Dato eliminado',
+          text: 'Se eliminó el campo exitosamente',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        });
+  
+        window.location.reload();
+  
+      } catch (error) {
+        Swal.fire(
+          'Error al borrar los datos',
+          'Por favor, inténtelo de nuevo',
+          'error'
+        );
+      }
+    }
+  }
+
 }

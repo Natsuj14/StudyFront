@@ -1,3 +1,16 @@
+/* .mat-toolbar{
+} */
+
+/* Cambia el color del texto de los enlaces en el mat-nav-list */
+.mat-list-item a{
+  color: #ff0000; /* Cambia el color del texto a tu elección, por ejemplo, rojo (#ff0000) */
+}
+
+a {
+  color: #ff0000;
+}
+
+
 .sidenav-container {
   height: 100%;
 }
@@ -22,3 +35,32 @@
   display: flex;
   justify-content: right;
 }
+
+body {
+  display: flex;
+  flex-direction: column; 
+  min-height: 100vh; 
+}
+
+.sidenav-container {
+  display: flex;
+  height: 100%;
+}
+
+mat-sidenav {
+  background-color: rgba(110, 200, 255, 0.80)
+  
+}
+
+mat-sidenav-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.Components {
+  background-color: rgba(22, 181, 255, 0.2);
+  flex: 1;
+  overflow: auto;
+}
+

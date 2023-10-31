@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ApiService } from 'src/app/Services/api.service';
 import { FormModuloComponent } from '../Forms/form-modulo/form-modulo.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-modulo',
@@ -59,4 +60,39 @@ export class ModuloComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+
+  async eliminarModulo(Modulo: any) {
+    console.log(Modulo.idModulo);
+    const result = await Swal.fire({
+      title: '¿Desea confirmar?',
+      text: '¿Desea borrar el dato definitivamente?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, borrar',
+      cancelButtonText: 'Cancelar'
+    });
+  
+    if (result.isConfirmed) {
+      try {
+        await this.api.delete("Modulos", Modulo.idModulo);
+  
+        await Swal.fire({
+          title: 'Dato eliminado',
+          text: 'Se eliminó el campo exitosamente',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        });
+  
+        window.location.reload();
+  
+      } catch (error) {
+        Swal.fire(
+          'Error al borrar los datos',
+          'Por favor, inténtelo de nuevo',
+          'error'
+        );
+      }
+    }
+  }
+  
 }

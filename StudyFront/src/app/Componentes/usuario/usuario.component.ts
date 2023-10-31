@@ -5,8 +5,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ApiService } from 'src/app/Services/api.service';
 import { MatDialog } from '@angular/material/dialog';
 import { FormUsuarioComponent } from '../Forms/form-usuario/form-usuario.component';
+import Swal from 'sweetalert2';
 
-export class IconOverviewExample {}
+export class IconOverviewExample { }
 
 @Component({
   selector: 'app-usuario',
@@ -22,36 +23,36 @@ export class UsuarioComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   dataSource: MatTableDataSource<any>;
-  
-  constructor(public api:ApiService, public dialog: MatDialog) {
+
+  constructor(public api: ApiService, public dialog: MatDialog) {
     this.dataSource = new MatTableDataSource;
   }
 
-  openDialog(){
-    this.dialog.open(FormUsuarioComponent,{
+  openDialog() {
+    this.dialog.open(FormUsuarioComponent, {
     })
   }
 
   ngOnInit(): void {
-    this.api.GET("Usuario").then((res)=>{
+    this.api.GET("Usuario").then((res) => {
 
       for (let index = 0; index < res.length; index++) {
         this.loadTable([res[index]]);
-        
+
       }
 
-      this.dataSource.data=res;
+      this.dataSource.data = res;
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
       console.log(this.dataSource);
-      
+
     })
   }
 
-  loadTable(data:any[]){
-    this.displayedColumns=[];
+  loadTable(data: any[]) {
+    this.displayedColumns = [];
 
-    for(let column in data[0]){
+    for (let column in data[0]) {
       this.displayedColumns.push(column);
     }
     this.displayedColumns.push('Acciones');
@@ -65,4 +66,40 @@ export class UsuarioComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+
+  async eliminarUsuario(Usuario: any) {
+    console.log(Usuario.idUsuario);
+  
+    const result = await Swal.fire({
+      title: '¿Desea confirmar?',
+      text: '¿Desea borrar el dato definitivamente?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, borrar',
+      cancelButtonText: 'Cancelar'
+    });
+  
+    if (result.isConfirmed) {
+      try {
+        await this.api.delete("Usuario", Usuario.idUsuario);
+  
+        await Swal.fire({
+          title: 'Dato eliminado',
+          text: 'Se eliminó el campo exitosamente',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        });
+  
+        window.location.reload();
+  
+      } catch (error) {
+        Swal.fire(
+          'Error al borrar los datos',
+          'Por favor, inténtelo de nuevo',
+          'error'
+        );
+      }
+    }
+  }
+
 }

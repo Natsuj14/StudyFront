@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ApiService } from 'src/app/Services/api.service';
 import { FormRolPermisoComponent } from '../Forms/form-rol-permiso/form-rol-permiso.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-rol-permiso',
@@ -59,4 +60,39 @@ export class RolPermisoComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+
+  async eliminarRolPermiso(RolPermiso: any) {
+    console.log(RolPermiso.idRolPermiso);
+    const result = await Swal.fire({
+      title: '¿Desea confirmar?',
+      text: '¿Desea borrar el dato definitivamente?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, borrar',
+      cancelButtonText: 'Cancelar'
+    });
+  
+    if (result.isConfirmed) {
+      try {
+        await this.api.delete("RolPermiso", RolPermiso.idRolPermiso);
+  
+        await Swal.fire({
+          title: 'Dato eliminado',
+          text: 'Se eliminó el campo exitosamente',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        });
+  
+        window.location.reload();
+  
+      } catch (error) {
+        Swal.fire(
+          'Error al borrar los datos',
+          'Por favor, inténtelo de nuevo',
+          'error'
+        );
+      }
+    }
+  }
+
 }
