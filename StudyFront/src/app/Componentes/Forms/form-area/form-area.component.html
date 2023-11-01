@@ -1,7 +1,7 @@
 <form [formGroup]="addressFormArea" novalidate (ngSubmit)="onSubmit()">
     <mat-card class="shipping-card">
         <mat-card-header>
-            <mat-card-title>Formulario Area</mat-card-title>
+            <mat-card-title>{{titulo}}</mat-card-title>
         </mat-card-header>
         <br>
         <mat-card-content>
@@ -17,7 +17,7 @@
             </div>
         </mat-card-content>
         <mat-card-actions>
-            <button mat-raised-button color="primary" type="submit" [disabled]="!addressFormArea.valid">Enviar</button>
+            <button mat-raised-button color="primary" type="submit" [disabled]="!addressFormArea.valid">{{accion}}</button>
         </mat-card-actions>
     </mat-card>
 </form>

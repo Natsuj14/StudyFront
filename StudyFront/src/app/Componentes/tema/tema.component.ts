@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ApiService } from 'src/app/Services/api.service';
 import { FormTemaComponent } from '../Forms/form-tema/form-tema.component';
 import Swal from 'sweetalert2';
+import { ModalServoceService } from 'src/app/Services/modal.servoce.service';
 
 @Component({
   selector: 'app-tema',
@@ -20,13 +21,15 @@ export class TemaComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   dataSource: MatTableDataSource<any>;
 
-  constructor(public api: ApiService, public dialog: MatDialog) {
+  constructor(public api: ApiService, public dialog: MatDialog, public modalService: ModalServoceService) {
     this.dataSource = new MatTableDataSource();
 
   }
 
-  openDialog(){
-    this.dialog.open(FormTemaComponent,{
+  openDialog() {
+    this.modalService.accion.next("Registrar");
+    this.modalService.titulo = "Crear tema";
+    this.dialog.open(FormTemaComponent, {
     })
   }
 
@@ -61,6 +64,13 @@ export class TemaComponent implements OnInit {
     }
   }
 
+  async editarTema(Tema: any) {
+    this.modalService.accion.next("Modificar");
+    this.modalService.titulo = "Editar tema";
+    this.dialog.open(FormTemaComponent, {
+    })
+  }
+
   async eliminarTema(Tema: any) {
     console.log(Tema.idTema);
     const result = await Swal.fire({
@@ -71,20 +81,20 @@ export class TemaComponent implements OnInit {
       confirmButtonText: 'Sí, borrar',
       cancelButtonText: 'Cancelar'
     });
-  
+
     if (result.isConfirmed) {
       try {
         await this.api.delete("Tema", Tema.idTema);
-  
+
         await Swal.fire({
           title: 'Dato eliminado',
           text: 'Se eliminó el campo exitosamente',
           icon: 'success',
           confirmButtonText: 'OK'
         });
-  
+
         window.location.reload();
-  
+
       } catch (error) {
         Swal.fire(
           'Error al borrar los datos',

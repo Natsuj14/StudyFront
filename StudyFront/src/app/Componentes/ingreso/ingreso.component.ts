@@ -7,6 +7,7 @@ import { FormUsuarioComponent } from '../Forms/form-usuario/form-usuario.compone
 import { MatDialog } from '@angular/material/dialog';
 import { FormIngresoComponent } from '../Forms/form-ingreso/form-ingreso.component';
 import Swal from 'sweetalert2';
+import { ModalServoceService } from 'src/app/Services/modal.servoce.service';
 
 @Component({
   selector: 'app-ingreso',
@@ -23,12 +24,14 @@ export class IngresoComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   dataSource: MatTableDataSource<any>;
 
-  constructor(public api:ApiService, public dialog: MatDialog) {
+  constructor(public api: ApiService, public dialog: MatDialog, public modalService: ModalServoceService) {
     this.dataSource = new MatTableDataSource;
   }
 
-  openDialog(){
-    this.dialog.open(FormIngresoComponent,{
+  openDialog() {
+    this.modalService.accion.next("Registrar");
+    this.modalService.titulo = "Crear ingreso";
+    this.dialog.open(FormIngresoComponent, {
     })
   }
 
@@ -65,6 +68,12 @@ export class IngresoComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+  async editarIngreso(Ingreso: any) {
+    this.modalService.accion.next("Modificar");
+    this.modalService.titulo = "Editar ingreso";
+    this.dialog.open(FormIngresoComponent, {
+    })
+  }
 
   async eliminarIngreso(Ingreso: any) {
     console.log(Ingreso.idIngreso);
@@ -76,20 +85,20 @@ export class IngresoComponent implements OnInit {
       confirmButtonText: 'Sí, borrar',
       cancelButtonText: 'Cancelar'
     });
-  
+
     if (result.isConfirmed) {
       try {
         await this.api.delete("Ingreso", Ingreso.idIngreso);
-  
+
         await Swal.fire({
           title: 'Dato eliminado',
           text: 'Se eliminó el campo exitosamente',
           icon: 'success',
           confirmButtonText: 'OK'
         });
-  
+
         window.location.reload();
-  
+
       } catch (error) {
         Swal.fire(
           'Error al borrar los datos',
@@ -99,5 +108,5 @@ export class IngresoComponent implements OnInit {
       }
     }
   }
-  
+
 }

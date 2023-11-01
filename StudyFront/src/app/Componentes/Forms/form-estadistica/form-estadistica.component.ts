@@ -1,7 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { EstadisticasModels } from 'src/app/Models/EstadisticasModels';
 import { ApiService } from 'src/app/Services/api.service';
+import { ModalServoceService } from 'src/app/Services/modal.servoce.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -9,7 +10,7 @@ import Swal from 'sweetalert2';
   templateUrl: './form-estadistica.component.html',
   styleUrls: ['./form-estadistica.component.css']
 })
-export class FormEstadisticaComponent {
+export class FormEstadisticaComponent implements OnInit {
 
   private fb = inject(FormBuilder);
   addressFormEstadistica = this.fb.group({
@@ -21,21 +22,25 @@ export class FormEstadisticaComponent {
     peormateria: [null, Validators.required]
   });
 
+  titulo = "";
+  accion = "";
   infoEstadistica: EstadisticasModels = {
-    
     idUsuario: 0,
     totalPruebas: 0,
     tiempoPromedio: "",
     promedio: "",
     mejorMateria: "",
     peorMateria: "",
-
   }
 
   hasUnitNumber = false;
 
-  constructor(public api: ApiService) {
+  constructor(public api: ApiService, public modalService: ModalServoceService) {
 
+  }
+  ngOnInit(): void {
+    this.titulo = this.modalService.titulo;
+    this.accion = this.modalService.accion.value;
   }
 
   async onSubmit(): Promise<void> {

@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ApiService } from 'src/app/Services/api.service';
 import { FormAreaComponent } from '../Forms/form-area/form-area.component';
 import Swal from 'sweetalert2';
+import { ModalServoceService } from 'src/app/Services/modal.servoce.service';
 
 @Component({
   selector: 'app-area',
@@ -21,11 +22,13 @@ export class AreaComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   dataSource: MatTableDataSource<any>;
 
-  constructor(public api: ApiService, public dialog: MatDialog) {
+  constructor(public api: ApiService, public dialog: MatDialog, public modalService : ModalServoceService) {
     this.dataSource = new MatTableDataSource;
   }
 
   openDialog() {
+    this.modalService.accion.next("Registrar");
+    this.modalService.titulo = "Crear area";
     this.dialog.open(FormAreaComponent, {
     })
   }
@@ -64,6 +67,15 @@ export class AreaComponent implements OnInit {
     }
   }
 
+  async editarArea(Area: any) {
+    this.modalService.accion.next("Modificar");
+    this.modalService.titulo = "Editar area";
+    this.dialog.open(FormAreaComponent,{
+      height: 'auto',
+      width: 'auto'
+    })
+  }
+
   async eliminarArea(Area: any) {
     console.log(Area.idArea);
     const result = await Swal.fire({
@@ -74,20 +86,20 @@ export class AreaComponent implements OnInit {
       confirmButtonText: 'Sí, borrar',
       cancelButtonText: 'Cancelar'
     });
-  
+
     if (result.isConfirmed) {
       try {
         await this.api.delete("Area", Area.idArea);
-  
+
         await Swal.fire({
           title: 'Dato eliminado',
           text: 'Se eliminó el campo exitosamente',
           icon: 'success',
           confirmButtonText: 'OK'
         });
-  
+
         window.location.reload();
-  
+
       } catch (error) {
         Swal.fire(
           'Error al borrar los datos',
@@ -97,5 +109,5 @@ export class AreaComponent implements OnInit {
       }
     }
   }
-  
+
 }

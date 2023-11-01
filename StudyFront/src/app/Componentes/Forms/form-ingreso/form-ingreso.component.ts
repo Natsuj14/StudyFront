@@ -1,7 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { IngresosModels } from 'src/app/Models/IngresosModels';
 import { ApiService } from 'src/app/Services/api.service';
+import { ModalServoceService } from 'src/app/Services/modal.servoce.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -9,7 +10,7 @@ import Swal from 'sweetalert2';
   templateUrl: './form-ingreso.component.html',
   styleUrls: ['./form-ingreso.component.css']
 })
-export class FormIngresoComponent {
+export class FormIngresoComponent implements OnInit {
 
   private fb = inject(FormBuilder);
   addressFormIngreso = this.fb.group({
@@ -18,18 +19,22 @@ export class FormIngresoComponent {
     tipo: [null, Validators.required]
   });
 
+  titulo = "";
+  accion = "";
   infoIngreso: IngresosModels = {
-    
     idUsuario: 0,
     fecha: "",
-    tipo: "",
-
+    tipo: ""
   }
 
   hasUnitNumber = false;
 
-  constructor(public api: ApiService) {
+  constructor(public api: ApiService, public modalService: ModalServoceService) {
 
+  }
+  ngOnInit(): void {
+    this.accion = this.modalService.accion.value;
+    this.titulo = this.modalService.titulo;
   }
 
   async onSubmit(): Promise<void> {

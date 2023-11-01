@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ApiService } from 'src/app/Services/api.service';
 import { FormPruebaComponent } from '../Forms/form-prueba/form-prueba.component';
 import Swal from 'sweetalert2';
+import { ModalServoceService } from 'src/app/Services/modal.servoce.service';
 
 @Component({
   selector: 'app-prueba',
@@ -14,21 +15,23 @@ import Swal from 'sweetalert2';
 })
 
 export class PruebaComponent implements OnInit {
-  
+
   Titulo = "Pruebas";
-  
+
   displayedColumns: string[] = [];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   dataSource: MatTableDataSource<any>;
 
-  constructor(public api: ApiService, public dialog: MatDialog) {
+  constructor(public api: ApiService, public dialog: MatDialog, public modalService: ModalServoceService) {
     this.dataSource = new MatTableDataSource;
   }
-  
-  openDialog(){
-    this.dialog.open(FormPruebaComponent,{
-    })
+
+  openDialog() {
+    this.modalService.titulo = "Crear prueba";
+    this.modalService.accion.next("Registrar");
+      this.dialog.open(FormPruebaComponent, {
+      })
   }
 
   ngOnInit(): void {
@@ -65,6 +68,13 @@ export class PruebaComponent implements OnInit {
     }
   }
 
+  async editarPrueba(Prueba: any) {
+    this.modalService.titulo = "Editar prueba";
+    this.modalService.accion.next("Modificar");
+      this.dialog.open(FormPruebaComponent, {
+      })
+  }
+
   async eliminarPrueba(Prueba: any) {
     console.log(Prueba.idPruebaa);
     const result = await Swal.fire({
@@ -75,20 +85,20 @@ export class PruebaComponent implements OnInit {
       confirmButtonText: 'Sí, borrar',
       cancelButtonText: 'Cancelar'
     });
-  
+
     if (result.isConfirmed) {
       try {
         await this.api.delete("Prueba", Prueba.idPrueba);
-  
+
         await Swal.fire({
           title: 'Dato eliminado',
           text: 'Se eliminó el campo exitosamente',
           icon: 'success',
           confirmButtonText: 'OK'
         });
-  
+
         window.location.reload();
-  
+
       } catch (error) {
         Swal.fire(
           'Error al borrar los datos',

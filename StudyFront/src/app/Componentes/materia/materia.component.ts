@@ -7,6 +7,7 @@ import { ApiService } from 'src/app/Services/api.service';
 import { FormPersonaComponent } from '../Forms/form-persona/form-persona.component';
 import { FormMateriaComponent } from '../Forms/form-materia/form-materia.component';
 import Swal from 'sweetalert2';
+import { ModalServoceService } from 'src/app/Services/modal.servoce.service';
 
 @Component({
   selector: 'app-materia',
@@ -21,12 +22,14 @@ export class MateriaComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   dataSource: MatTableDataSource<any>;
 
-  constructor(public api: ApiService, public dialog: MatDialog) {
+  constructor(public api: ApiService, public dialog: MatDialog, public modalService: ModalServoceService) {
     this.dataSource = new MatTableDataSource();
 
   }
 
   openDialog() {
+    this.modalService.accion.next("Registrar");
+    this.modalService.titulo = "Crear materia";
     this.dialog.open(FormMateriaComponent, {
     })
   }
@@ -63,7 +66,10 @@ export class MateriaComponent implements OnInit {
   }
 
   editarMateria(materia: any) {
-    //
+    this.modalService.accion.next("Modificar");
+    this.modalService.titulo = "Editar materia";
+    this.dialog.open(FormMateriaComponent, {
+    })
   }
 
   async eliminarMateria(Materia: any) {

@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ApiService } from 'src/app/Services/api.service';
 import { FormModuloComponent } from '../Forms/form-modulo/form-modulo.component';
 import Swal from 'sweetalert2';
+import { ModalServoceService } from 'src/app/Services/modal.servoce.service';
 
 @Component({
   selector: 'app-modulo',
@@ -20,13 +21,15 @@ export class ModuloComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   dataSource: MatTableDataSource<any>;
 
-  constructor(public api: ApiService, public dialog: MatDialog) {
+  constructor(public api: ApiService, public dialog: MatDialog, public modalService: ModalServoceService) {
     this.dataSource = new MatTableDataSource();
 
   }
 
-  openDialog(){
-    this.dialog.open(FormModuloComponent,{
+  openDialog() {
+    this.modalService.accion.next("Registrar");
+    this.modalService.titulo = "Crear modulo";
+    this.dialog.open(FormModuloComponent, {
     })
   }
 
@@ -60,6 +63,13 @@ export class ModuloComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+  async editarModulo(Modulo: any) {
+    this.modalService.accion.next("Modificar");
+    this.modalService.titulo = "Editar modulo";
+    this.dialog.open(FormModuloComponent, {
+    })
+  }
+
 
   async eliminarModulo(Modulo: any) {
     console.log(Modulo.idModulo);
@@ -71,20 +81,20 @@ export class ModuloComponent implements OnInit {
       confirmButtonText: 'Sí, borrar',
       cancelButtonText: 'Cancelar'
     });
-  
+
     if (result.isConfirmed) {
       try {
         await this.api.delete("Modulos", Modulo.idModulo);
-  
+
         await Swal.fire({
           title: 'Dato eliminado',
           text: 'Se eliminó el campo exitosamente',
           icon: 'success',
           confirmButtonText: 'OK'
         });
-  
+
         window.location.reload();
-  
+
       } catch (error) {
         Swal.fire(
           'Error al borrar los datos',
@@ -94,5 +104,5 @@ export class ModuloComponent implements OnInit {
       }
     }
   }
-  
+
 }

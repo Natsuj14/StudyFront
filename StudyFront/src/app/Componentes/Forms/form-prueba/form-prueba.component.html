@@ -1,7 +1,7 @@
 <form [formGroup]="addressFormPrueba" novalidate (ngSubmit)="onSubmit()">
     <mat-card class="shipping-card">
         <mat-card-header>
-            <mat-card-title>Formulario Prueba</mat-card-title>
+            <mat-card-title>{{titulo}}</mat-card-title>
         </mat-card-header>
         <br>
         <mat-card-content>
@@ -57,26 +57,6 @@
                 </div>
             </div>
             <div class="row">
-                <!-- <div class="col">
-                    <mat-form-field class="full-width">
-                        <mat-label>Áreas</mat-label>
-                        <mat-select formControlName="Areas" placeholder="Selecciona un área">
-                            <mat-option value="Matematicas">Matemáticas</mat-option>
-                            <mat-option value="Ciencias">Ciencias</mat-option>
-                            <mat-option value="Historia">Historia</mat-option>
-                            <mat-option value="Literatura">Literatura</mat-option>
-                            <mat-option value="Fisica">Fisica</mat-option>
-                            <mat-option value="Quimica">Quimica</mat-option>
-                            <mat-option value="Biologia">Biologia</mat-option>
-                            <mat-option value="Arte">Arte</mat-option>
-                            <mat-option value="Geografia">Geografia</mat-option>
-                            <mat-option value="Musica">Musica</mat-option>
-                        </mat-select>
-                        <mat-error *ngIf="addressFormPrueba.controls['area'].hasError('required')">
-                            El área es <strong>requerida</strong>
-                        </mat-error>
-                    </mat-form-field>
-                </div> -->
                 <div class="col">
                     <mat-form-field class="full-width">
                         <input matInput placeholder="Areas" formControlName="idArea">
@@ -90,7 +70,7 @@
         </mat-card-content>
         <mat-card-actions>
             <button mat-raised-button color="primary" type="submit"
-                [disabled]="!addressFormPrueba.valid">Enviar</button>
+                [disabled]="!addressFormPrueba.valid">{{accion}}</button>
         </mat-card-actions>
     </mat-card>
 </form>

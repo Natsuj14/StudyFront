@@ -1,7 +1,7 @@
 <form [formGroup]="addressFormEstadistica" novalidate (ngSubmit)="onSubmit()">
     <mat-card class="shipping-card">
         <mat-card-header>
-            <mat-card-title>Formulario Estadistica</mat-card-title>
+            <mat-card-title>{{titulo}}</mat-card-title>
         </mat-card-header>
         <br>
         <mat-card-content>
@@ -46,66 +46,6 @@
                 </div>
             </div>
             <div class="row">
-                <!-- <div class="col">
-                    <mat-form-field class="full-width">
-                        <mat-label>Mejor Materia</mat-label>
-                        <mat-select formControlName="Mejor Materia" placeholder="Selecciona una materia">
-                            <mat-option value="Álgebra">Álgebra</mat-option>
-                            <mat-option value="Geometría">Geometría</mat-option>
-                            <mat-option value="Biología Celular">Biología Celular</mat-option>
-                            <mat-option value="Química Orgánica">Química Orgánica</mat-option>
-                            <mat-option value="Historia Antigua">Historia Antigua</mat-option>
-                            <mat-option value="Física Clásica">Física Clásica</mat-option>
-                            <mat-option value="Literatura Universal">Literatura Universal</mat-option>
-                            <mat-option value="Geografía Mundial">Geografía Mundial</mat-option>
-                            <mat-option value="Arte Renacentista">Arte Renacentista</mat-option>
-                            <mat-option value="Música Clásica">Música Clásica</mat-option>
-                            <mat-option value="Álgebra Lineal">Álgebra Lineal</mat-option>
-                            <mat-option value="Anatomía Humana">Anatomía Humana</mat-option>
-                            <mat-option value="Química Inorgánica">Química Inorgánica</mat-option>
-                            <mat-option value="Historia Medieval">Historia Medieval</mat-option>
-                            <mat-option value="Física Moderna">Física Moderna</mat-option>
-                            <mat-option value="Poesía Contemporánea">Poesía Contemporánea</mat-option>
-                            <mat-option value="Arte Abstracto">Arte Abstracto</mat-option>
-                            <mat-option value="Geografía Regional">Geografía Regional</mat-option>
-                            <mat-option value="Música Pop">Música Pop</mat-option>
-                            <mat-option value="Economía">Economía</mat-option>
-                        </mat-select>
-                        <mat-error *ngIf="addressFormEstadistica.controls['mejormateria'].hasError('required')">
-                            La materia es <strong>requerida</strong>
-                        </mat-error>
-                    </mat-form-field>
-                </div> -->
-                <!-- <div class="col"> -->
-                    <!-- <mat-form-field class="full-width">
-                        <mat-label>Peor Materia</mat-label>
-                        <mat-select formControlName="Peor Materia" placeholder="Selecciona una materia">
-                            <mat-option value="Álgebra">Álgebra</mat-option>
-                            <mat-option value="Geometría">Geometría</mat-option>
-                            <mat-option value="Biología Celular">Biología Celular</mat-option>
-                            <mat-option value="Química Orgánica">Química Orgánica</mat-option>
-                            <mat-option value="Historia Antigua">Historia Antigua</mat-option>
-                            <mat-option value="Física Clásica">Física Clásica</mat-option>
-                            <mat-option value="Literatura Universal">Literatura Universal</mat-option>
-                            <mat-option value="Geografía Mundial">Geografía Mundial</mat-option>
-                            <mat-option value="Arte Renacentista">Arte Renacentista</mat-option>
-                            <mat-option value="Música Clásica">Música Clásica</mat-option>
-                            <mat-option value="Álgebra Lineal">Álgebra Lineal</mat-option>
-                            <mat-option value="Anatomía Humana">Anatomía Humana</mat-option>
-                            <mat-option value="Química Inorgánica">Química Inorgánica</mat-option>
-                            <mat-option value="Historia Medieval">Historia Medieval</mat-option>
-                            <mat-option value="Física Moderna">Física Moderna</mat-option>
-                            <mat-option value="Poesía Contemporánea">Poesía Contemporánea</mat-option>
-                            <mat-option value="Arte Abstracto">Arte Abstracto</mat-option>
-                            <mat-option value="Geografía Regional">Geografía Regional</mat-option>
-                            <mat-option value="Música Pop">Música Pop</mat-option>
-                            <mat-option value="Economía">Economía</mat-option>
-                        </mat-select>
-                        <mat-error *ngIf="addressFormEstadistica.controls['peormateria'].hasError('required')">
-                            La materia es <strong>requerida</strong>
-                        </mat-error>
-                    </mat-form-field> -->
-                <!-- </div> -->
                 <div class="col">
                     <mat-form-field class="full-width">
                         <input matInput placeholder="Mejor Materia" formControlName="mejormateria">
@@ -125,7 +65,7 @@
             </div>
         </mat-card-content>
         <mat-card-actions>
-            <button mat-raised-button color="primary" type="submit" [disabled]="!addressFormEstadistica.valid">Enviar</button>
+            <button mat-raised-button color="primary" type="submit" [disabled]="!addressFormEstadistica.valid">{{accion}}</button>
         </mat-card-actions>
     </mat-card>
 </form>

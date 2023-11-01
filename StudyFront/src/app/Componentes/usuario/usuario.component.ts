@@ -6,6 +6,7 @@ import { ApiService } from 'src/app/Services/api.service';
 import { MatDialog } from '@angular/material/dialog';
 import { FormUsuarioComponent } from '../Forms/form-usuario/form-usuario.component';
 import Swal from 'sweetalert2';
+import { ModalServoceService } from 'src/app/Services/modal.servoce.service';
 
 export class IconOverviewExample { }
 
@@ -24,11 +25,13 @@ export class UsuarioComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   dataSource: MatTableDataSource<any>;
 
-  constructor(public api: ApiService, public dialog: MatDialog) {
+  constructor(public api: ApiService, public dialog: MatDialog, public modalService: ModalServoceService) {
     this.dataSource = new MatTableDataSource;
   }
 
   openDialog() {
+    this.modalService.accion.next("Registrar");
+    this.modalService.titulo = "Crear usuario";
     this.dialog.open(FormUsuarioComponent, {
     })
   }
@@ -67,9 +70,16 @@ export class UsuarioComponent implements OnInit {
     }
   }
 
+  async editarUsuario(Usuario: any) {
+    this.modalService.accion.next("Modificar");
+    this.modalService.titulo = "Editar usuario";
+    this.dialog.open(FormUsuarioComponent, {
+    })
+  }
+
   async eliminarUsuario(Usuario: any) {
     console.log(Usuario.idUsuario);
-  
+
     const result = await Swal.fire({
       title: '¿Desea confirmar?',
       text: '¿Desea borrar el dato definitivamente?',
@@ -78,20 +88,20 @@ export class UsuarioComponent implements OnInit {
       confirmButtonText: 'Sí, borrar',
       cancelButtonText: 'Cancelar'
     });
-  
+
     if (result.isConfirmed) {
       try {
         await this.api.delete("Usuario", Usuario.idUsuario);
-  
+
         await Swal.fire({
           title: 'Dato eliminado',
           text: 'Se eliminó el campo exitosamente',
           icon: 'success',
           confirmButtonText: 'OK'
         });
-  
+
         window.location.reload();
-  
+
       } catch (error) {
         Swal.fire(
           'Error al borrar los datos',

@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ApiService } from 'src/app/Services/api.service';
 import { FormPreguntaComponent } from '../Forms/form-pregunta/form-pregunta.component';
 import Swal from 'sweetalert2';
+import { ModalServoceService } from 'src/app/Services/modal.servoce.service';
 
 @Component({
   selector: 'app-pregunta',
@@ -20,11 +21,13 @@ export class PreguntaComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   dataSource: MatTableDataSource<any>;
 
-  constructor(public api: ApiService, public dialog: MatDialog) {
+  constructor(public api: ApiService, public dialog: MatDialog, public modalService: ModalServoceService) {
     this.dataSource = new MatTableDataSource();
   }
 
   openDialog(){
+    this.modalService.accion.next("Registrar");
+    this.modalService.titulo = "Crear pregunta"
     this.dialog.open(FormPreguntaComponent,{
     })
   }
@@ -58,6 +61,15 @@ export class PreguntaComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+
+  async editarPregunta(Preguntas: any) {
+    this.modalService.accion.next("Modificar");
+    this.modalService.titulo = "Editar pregunta"
+    this.dialog.open(FormPreguntaComponent,{
+    })
+  }
+
+
   async eliminarPregunta(Preguntas: any) {
     const result = await Swal.fire({
       title: '¿Desea confirmar?',

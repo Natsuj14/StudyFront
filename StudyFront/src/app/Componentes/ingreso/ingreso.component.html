@@ -16,7 +16,7 @@
                     <th mat-header-cell *matHeaderCellDef>{{disCol}}</th>
                     <td mat-cell *matCellDef="let element">
                         <!-- <a class="option" (click)="editarRegistro(element)"><i class="fi fi-rs-pencil"></i></a> -->
-                        <a class="option"><i class="fi fi-br-edit"></i></a>
+                        <a class="option" (click)="editarIngreso(element)"><i class="fi fi-br-edit"></i></a>
                         <a class="option" id="RedIcon" (click)="eliminarIngreso(element)"><i class="fi fi-sr-trash"></i></a>
                     </td>
                 </div>

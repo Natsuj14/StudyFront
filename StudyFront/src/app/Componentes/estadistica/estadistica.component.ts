@@ -6,6 +6,7 @@ import { ApiService } from 'src/app/Services/api.service';
 import { FormEstadisticaComponent } from '../Forms/form-estadistica/form-estadistica.component';
 import { MatDialog } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
+import { ModalServoceService } from 'src/app/Services/modal.servoce.service';
 
 @Component({
   selector: 'app-estadistica',
@@ -19,11 +20,13 @@ export class EstadisticaComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   dataSource: MatTableDataSource<any>;
 
-  constructor(public api: ApiService, public dialog: MatDialog) {
+  constructor(public api: ApiService, public dialog: MatDialog, public modalService: ModalServoceService) {
     this.dataSource = new MatTableDataSource;
   }
 
   openDialog() {
+    this.modalService.accion.next("Registrar")
+    this.modalService.titulo = "Crear estadistica";
     this.dialog.open(FormEstadisticaComponent, {
     })
   }
@@ -62,6 +65,13 @@ export class EstadisticaComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+  async editarEstadistica(Estadistica: any) {
+    this.modalService.accion.next("Modificar")
+    this.modalService.titulo = "Editar estadistica";
+    this.dialog.open(FormEstadisticaComponent, {
+    })
+  }
+
   async eliminarEstadistica(Estadistica: any) {
     const result = await Swal.fire({
       title: '¿Desea confirmar?',

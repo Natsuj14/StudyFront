@@ -6,6 +6,7 @@ import { ApiService } from 'src/app/Services/api.service';
 import { MatDialog } from '@angular/material/dialog';
 import { FormRolComponent } from '../Forms/form-rol/form-rol.component';
 import Swal from 'sweetalert2';
+import { ModalServoceService } from 'src/app/Services/modal.servoce.service';
 
 @Component({
   selector: 'app-rol',
@@ -16,18 +17,20 @@ import Swal from 'sweetalert2';
 export class RolComponent implements OnInit {
 
   Titulo = "Roles";
-  
+
   displayedColumns: string[] = [];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   dataSource: MatTableDataSource<any>;
 
-  constructor(public api: ApiService, public dialog: MatDialog) {
+  constructor(public api: ApiService, public dialog: MatDialog, public modalService: ModalServoceService) {
     this.dataSource = new MatTableDataSource;
   }
-  
-  openDialog(){
-    this.dialog.open(FormRolComponent,{
+
+  openDialog() {
+    this.modalService.accion.next("Registrar");
+    this.modalService.titulo = "Crear rol";
+    this.dialog.open(FormRolComponent, {
     })
   }
 
@@ -65,6 +68,13 @@ export class RolComponent implements OnInit {
     }
   }
 
+  async editarRol(Rol: any) {
+    this.modalService.accion.next("Modificar");
+    this.modalService.titulo = "Editar rol";
+    this.dialog.open(FormRolComponent, {
+    })
+  }
+
   async eliminarRol(Rol: any) {
     console.log(Rol.idRol);
     const result = await Swal.fire({
@@ -75,20 +85,20 @@ export class RolComponent implements OnInit {
       confirmButtonText: 'Sí, borrar',
       cancelButtonText: 'Cancelar'
     });
-  
+
     if (result.isConfirmed) {
       try {
         await this.api.delete("Rol", Rol.idRol);
-  
+
         await Swal.fire({
           title: 'Dato eliminado',
           text: 'Se eliminó el campo exitosamente',
           icon: 'success',
           confirmButtonText: 'OK'
         });
-  
+
         window.location.reload();
-  
+
       } catch (error) {
         Swal.fire(
           'Error al borrar los datos',
