@@ -14,8 +14,7 @@ export class ApiService {
     await this.api.get(this.Url + controller).toPromise().then((res => {
       console.log(res);
       result = res;
-    })
-    )
+    }))
     return result;
   }
 
@@ -36,8 +35,8 @@ export class ApiService {
     return this.api.post(this.Url + controller, body);
   }
 
-  public async update(controller: String, Id: string, body: any) {
-    return this.api.put(this.Url + controller + "/" + Id, body);
-  }
+  public async put(controller: String, Id: string, body: any) {
+    return await this.api.put(this.Url + controller + "/" + Id, body).subscribe((res) => { });
+    }
 
 }

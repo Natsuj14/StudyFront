@@ -68,6 +68,7 @@ export class EstadisticaComponent implements OnInit {
   async editarEstadistica(Estadistica: any) {
     this.modalService.accion.next("Modificar")
     this.modalService.titulo = "Editar estadistica";
+    this.modalService.estadistica = Estadistica;
     this.dialog.open(FormEstadisticaComponent, {
     })
   }
@@ -84,7 +85,7 @@ export class EstadisticaComponent implements OnInit {
 
     if (result.isConfirmed) {
       try {
-        await this.api.delete("Estadistica", Estadistica.idEstadistica);
+        await this.api.delete("Estadisticas", Estadistica.idEstadistica);
 
         await Swal.fire({
           title: 'Dato eliminado',

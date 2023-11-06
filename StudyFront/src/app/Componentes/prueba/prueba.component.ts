@@ -71,6 +71,7 @@ export class PruebaComponent implements OnInit {
   async editarPrueba(Prueba: any) {
     this.modalService.titulo = "Editar prueba";
     this.modalService.accion.next("Modificar");
+    this.modalService.prueba = Prueba;
       this.dialog.open(FormPruebaComponent, {
       })
   }

@@ -66,6 +66,8 @@ export class PersonaComponent implements OnInit {
   async editarPersona(Persona: any) {
     this.modalService.accion.next("Modificar");
     this.modalService.titulo = "Editar persona";
+    this.modalService.id = Persona.idPersona;
+    this.modalService.persona = Persona;
     this.dialog.open(FormPersonaComponent, {
     })
   }

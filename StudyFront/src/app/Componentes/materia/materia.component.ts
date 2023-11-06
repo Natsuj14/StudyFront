@@ -65,9 +65,10 @@ export class MateriaComponent implements OnInit {
     }
   }
 
-  editarMateria(materia: any) {
+  editarMateria(Materia: any) {
     this.modalService.accion.next("Modificar");
     this.modalService.titulo = "Editar materia";
+    this.modalService.materia = Materia;
     this.dialog.open(FormMateriaComponent, {
     })
   }

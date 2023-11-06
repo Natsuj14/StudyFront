@@ -71,6 +71,7 @@ export class IngresoComponent implements OnInit {
   async editarIngreso(Ingreso: any) {
     this.modalService.accion.next("Modificar");
     this.modalService.titulo = "Editar ingreso";
+    this.modalService.ingreso = Ingreso;
     this.dialog.open(FormIngresoComponent, {
     })
   }

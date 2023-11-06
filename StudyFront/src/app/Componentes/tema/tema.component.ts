@@ -67,6 +67,7 @@ export class TemaComponent implements OnInit {
   async editarTema(Tema: any) {
     this.modalService.accion.next("Modificar");
     this.modalService.titulo = "Editar tema";
+    this.modalService.tema = Tema;
     this.dialog.open(FormTemaComponent, {
     })
   }

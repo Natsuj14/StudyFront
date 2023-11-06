@@ -62,15 +62,16 @@ export class PreguntaComponent implements OnInit {
     }
   }
 
-  async editarPregunta(Preguntas: any) {
+  async editarPregunta(Pregunta: any) {
     this.modalService.accion.next("Modificar");
-    this.modalService.titulo = "Editar pregunta"
+    this.modalService.titulo = "Editar pregunta";
+    this.modalService.pregunta = Pregunta;
     this.dialog.open(FormPreguntaComponent,{
     })
   }
 
 
-  async eliminarPregunta(Preguntas: any) {
+  async eliminarPregunta(Pregunta: any) {
     const result = await Swal.fire({
       title: '¿Desea confirmar?',
       text: '¿Desea borrar el dato definitivamente?',
@@ -82,7 +83,7 @@ export class PreguntaComponent implements OnInit {
   
     if (result.isConfirmed) {
       try {
-        await this.api.delete("Preguntas", Preguntas.idPreguntas);
+        await this.api.delete("Preguntas", Pregunta.idPreguntas);
   
         await Swal.fire({
           title: 'Dato eliminado',
