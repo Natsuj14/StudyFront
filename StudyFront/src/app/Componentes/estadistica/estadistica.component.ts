@@ -69,7 +69,9 @@ export class EstadisticaComponent implements OnInit {
     this.modalService.accion.next("Modificar")
     this.modalService.titulo = "Editar estadistica";
     this.modalService.estadistica = Estadistica;
+    this.modalService.id = Estadistica.idEstadistica; 
     this.dialog.open(FormEstadisticaComponent, {
+    
     })
   }
 

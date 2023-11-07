@@ -72,6 +72,7 @@ export class RolComponent implements OnInit {
     this.modalService.accion.next("Modificar");
     this.modalService.titulo = "Editar rol";
     this.modalService.rol = Rol;
+    this.modalService.id = Rol.idRol;
     this.dialog.open(FormRolComponent, {
     })
   }

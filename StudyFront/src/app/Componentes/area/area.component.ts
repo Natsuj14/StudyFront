@@ -70,6 +70,8 @@ export class AreaComponent implements OnInit {
   async editarArea(Area: any) {
     this.modalService.accion.next("Modificar");
     this.modalService.titulo = "Editar area";
+    this.modalService.area = Area;
+    this.modalService.id = Area.idArea;
     this.dialog.open(FormAreaComponent,{
       height: 'auto',
       width: 'auto'

@@ -73,6 +73,7 @@ export class UsuarioComponent implements OnInit {
   async editarUsuario(Usuario: any) {
     this.modalService.accion.next("Modificar");
     this.modalService.titulo = "Editar usuario";
+    this.modalService.id = Usuario.idUsuario;
     this.modalService.usuario = Usuario;
     this.dialog.open(FormUsuarioComponent, {
     })

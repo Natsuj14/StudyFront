@@ -1,5 +1,5 @@
 export class RolesModels{
 
-    descripcionRol: string;
+    descripcion: string;
 
 }

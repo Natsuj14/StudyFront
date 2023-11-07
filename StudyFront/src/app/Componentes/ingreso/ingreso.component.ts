@@ -72,6 +72,7 @@ export class IngresoComponent implements OnInit {
     this.modalService.accion.next("Modificar");
     this.modalService.titulo = "Editar ingreso";
     this.modalService.ingreso = Ingreso;
+    this.modalService.id = Ingreso.idIngreso;
     this.dialog.open(FormIngresoComponent, {
     })
   }

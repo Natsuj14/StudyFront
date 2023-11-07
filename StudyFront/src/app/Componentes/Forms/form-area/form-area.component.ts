@@ -14,12 +14,18 @@ export class FormAreaComponent implements OnInit {
 
   private fb = inject(FormBuilder);
   addressFormArea = this.fb.group({
-    nombre: [null, Validators.required]
+    nombre: ['', Validators.required]
   });
 
   titulo = "";
   accion = "";
+
   infoArea: AreasModels = {
+    nombre: "",
+  }
+
+  infoAreaPut ={
+    idArea: 0,
     nombre: "",
   }
 
@@ -31,37 +37,72 @@ export class FormAreaComponent implements OnInit {
   ) {
 
   }
+
   ngOnInit(): void {
-    this.titulo = this.modalService.titulo;
     this.accion = this.modalService.accion.value;
+    this.titulo = this.modalService.titulo;
+    console.log(this.modalService.area);
+    if (this.modalService.accion.value == 'Modificar') {
+      this.addressFormArea.controls['nombre'].setValue(
+        this.modalService.area.nombre + ''
+      );
+    }else{
+    }
+
   }
 
   async onSubmit(): Promise<void> {
     try {
       this.infoArea.nombre = this.addressFormArea.controls['nombre'].value;
 
-      console.log(this.infoArea);
+      if (this.modalService.accion.value == "Modificar") {
 
-      const response = await this.api.post("Area", this.infoArea);
+        this.infoAreaPut.idArea = this.modalService.id;
+        this.infoAreaPut.nombre = this.infoArea.nombre;
 
-      if (response) {
-        console.log(response)
-        const result = await Swal.fire({
-          title: 'Nuevo dato añadido',
-          text: 'Se añadió el campo exitosamente',
-          icon: 'success',
-          confirmButtonText: 'OK'
-        });
-        if (result.isConfirmed) {
-          window.location.reload();
+        const response = await this.api.put("Area",this.modalService.id+'', this.infoAreaPut);
+
+        if (response) {
+          const result = await Swal.fire({
+            title: 'Dato modificado',
+            text: 'Se modificó el campo exitosamente',
+            icon: 'success',
+            confirmButtonText: 'OK'
+          });
+          if (result.isConfirmed) {
+            window.location.reload();
+          }
+        } else {
+          Swal.fire(
+            'Error al enviar los datos',
+            'Ha ocurrido un error al editar el campo',
+            'error'
+          );
         }
+        
       } else {
-        Swal.fire(
-          'Error al enviar los datos',
-          'Ha ocurrido un error al agregar el campo',
-          'error'
-        );
+
+        const response = await this.api.post("Area", this.infoArea);
+
+        if (response) {
+          const result = await Swal.fire({
+            title: 'Nuevo dato añadido',
+            text: 'Se añadió el campo exitosamente',
+            icon: 'success',
+            confirmButtonText: 'OK'
+          });
+          if (result.isConfirmed) {
+            window.location.reload();
+          }
+        } else {
+          Swal.fire(
+            'Error al enviar los datos',
+            'Ha ocurrido un error al agregar el campo',
+            'error'
+          );
+        }
       }
+
     } catch (error) {
       Swal.fire(
         'Error al enviar los datos',
