@@ -11,6 +11,7 @@ import { RolPermisoModels } from '../Models/RolPermisoModels';
 import { TemasModels } from '../Models/TemasModels';
 import { UsuariosModel } from '../Models/Usuarios.Models';
 import { PruebasModels } from '../Models/PruebasModels';
+import { ModulosModels } from '../Models/ModulosModels';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,7 @@ export class ModalServoceService {
   estadistica: EstadisticasModels;
   ingreso: IngresosModels;
   materia: MateriasModels;
-  modulo: MateriasModels;
+  modulo: ModulosModels;
   persona: PersonasModels;
   pregunta: PreguntasModels;
   prueba: PruebasModels;

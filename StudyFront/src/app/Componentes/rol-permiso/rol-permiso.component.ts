@@ -68,6 +68,7 @@ export class RolPermisoComponent implements OnInit {
     this.modalService.accion.next("Modificar");
     this.modalService.titulo = "Editar rol-permiso";
     this.modalService.rolPermiso = RolPermiso;
+    this.modalService.id = RolPermiso.idRolPermiso;
     this.dialog.open(FormRolPermisoComponent, {
     })
   }

@@ -1,5 +1,5 @@
 export class TemasModels{
-    IdMateria: number;
-    Nombre: string;
-    Contenido: string;
+    idMateria: number;
+    nombre: string;
+    contenido: string;
 }

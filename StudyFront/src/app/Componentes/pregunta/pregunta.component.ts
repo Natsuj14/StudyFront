@@ -66,6 +66,7 @@ export class PreguntaComponent implements OnInit {
     this.modalService.accion.next("Modificar");
     this.modalService.titulo = "Editar pregunta";
     this.modalService.pregunta = Pregunta;
+    this.modalService.id = Pregunta.idPregunta;
     this.dialog.open(FormPreguntaComponent,{
     })
   }

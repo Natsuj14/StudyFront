@@ -27,6 +27,7 @@ export class FormPersonaComponent implements OnInit {
 
   titulo = "";
   accion = "";
+  
   infoPersona: PersonasModels = {
     idRol: 0,
     nombre: "",

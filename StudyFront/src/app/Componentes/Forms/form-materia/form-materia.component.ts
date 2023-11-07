@@ -15,13 +15,19 @@ import Swal from 'sweetalert2';
 export class FormMateriaComponent implements OnInit {
   private fb = inject(FormBuilder);
   addressFormMateria = this.fb.group({
-    Nombre: [null, Validators.required],
+    Nombre: ['', Validators.required],
     Area: [null, Validators.required],
   });
 
   titulo = "";
   accion = "";
   infoMateria: MateriasModels = {
+    idArea: 0,
+    nombre: ""
+  }
+
+  infoMateria1 = {
+    idMateria: 0,
     idArea: 0,
     nombre: ""
   }
@@ -34,6 +40,12 @@ export class FormMateriaComponent implements OnInit {
   ngOnInit(): void {
     this.titulo = this.modalService.titulo;
     this.accion = this.modalService.accion.value;
+    if (this.modalService.accion.value == 'Modificar') {
+      console.log(this.modalService.persona);
+      this.addressFormMateria.controls['Nombre'].setValue(
+        this.modalService.materia.nombre + ''
+      );
+    }
   }
 
   async onSubmit(): Promise<void> {
@@ -44,24 +56,52 @@ export class FormMateriaComponent implements OnInit {
 
       console.log(this.infoMateria);
 
-      const response = await this.api.post("Materia", this.infoMateria);
+      if (this.modalService.accion.value == "Modificar") {
 
-      if (response) {
-        const result = await Swal.fire({
-          title: 'Nuevo dato añadido',
-          text: 'Se añadió el campo exitosamente',
-          icon: 'success',
-          confirmButtonText: 'OK'
-        });
-        if (result.isConfirmed) {
-          window.location.reload();
+        this.infoMateria1.idMateria = this.modalService.id;
+        this.infoMateria1.nombre = this.infoMateria.nombre;
+        this.infoMateria1.idArea = this.infoMateria.idArea;
+
+        const response = await this.api.put("Materia", this.modalService.id + '', this.infoMateria1);
+
+        if (response) {
+          const result = await Swal.fire({
+            title: 'Dato modificado',
+            text: 'Se modificó el campo exitosamente',
+            icon: 'success',
+            confirmButtonText: 'OK'
+          });
+          if (result.isConfirmed) {
+            window.location.reload();
+          }
+        } else {
+          Swal.fire(
+            'Error al enviar los datos',
+            'Ha ocurrido un error al editar el campo',
+            'error'
+          );
         }
+
       } else {
-        Swal.fire(
-          'Error al enviar los datos',
-          'Ha ocurrido un error al agregar el campo',
-          'error'
-        );
+        const response = await this.api.post("Materia", this.infoMateria);
+
+        if (response) {
+          const result = await Swal.fire({
+            title: 'Nuevo dato añadido',
+            text: 'Se añadió el campo exitosamente',
+            icon: 'success',
+            confirmButtonText: 'OK'
+          });
+          if (result.isConfirmed) {
+            window.location.reload();
+          }
+        } else {
+          Swal.fire(
+            'Error al enviar los datos',
+            'Ha ocurrido un error al agregar el campo',
+            'error'
+          );
+        }
       }
     } catch (error) {
       Swal.fire(

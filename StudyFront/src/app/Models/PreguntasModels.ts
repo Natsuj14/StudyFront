@@ -1,9 +1,9 @@
 export class PreguntasModels {
     idTema: number;
-    Enunciado: string;
-    Respuesta: string;
-    OpcionA: string;
-    OpcionB: string;
-    OpcionC: string;
+    enunciado: string;
+    respuesta: string;
+    opcionA: string;
+    opcionB: string;
+    opcionC: string;
 
 }

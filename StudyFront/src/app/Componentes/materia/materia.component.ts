@@ -69,6 +69,7 @@ export class MateriaComponent implements OnInit {
     this.modalService.accion.next("Modificar");
     this.modalService.titulo = "Editar materia";
     this.modalService.materia = Materia;
+    this.modalService.id = Materia.idMateria;
     this.dialog.open(FormMateriaComponent, {
     })
   }

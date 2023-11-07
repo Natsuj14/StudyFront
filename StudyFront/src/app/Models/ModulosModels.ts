@@ -1,3 +1,3 @@
 export class ModulosModels {
-    DescripcionMod: string;
+    descripcionMod: string;
 }

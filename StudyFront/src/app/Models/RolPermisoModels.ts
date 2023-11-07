@@ -1,9 +1,9 @@
 export class RolPermisoModels {
-    IdRol: number;
-    IdModulo: number;
-    PermisoPost: boolean;
-    PermisoDelete: boolean;
-    PermisoGet: boolean;
-    PermisoPut: boolean;
-    PermisoGetById: boolean;
+    idRol: number;
+    idModulo: number;
+    permisoPost: boolean;
+    permisoDelete: boolean;
+    permisoGet: boolean;
+    permisoPut: boolean;
+    permisoGetById: boolean;
 }

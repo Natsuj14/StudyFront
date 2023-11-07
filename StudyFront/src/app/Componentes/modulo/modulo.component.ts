@@ -67,6 +67,7 @@ export class ModuloComponent implements OnInit {
     this.modalService.accion.next("Modificar");
     this.modalService.titulo = "Editar modulo";
     this.modalService.modulo = Modulo;
+    this.modalService.id = Modulo.idModulo;
     this.dialog.open(FormModuloComponent, {
     })
   }
