@@ -1,0 +1,30 @@
+<form [formGroup]="addressFormLogin" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>Login</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Usuario" formControlName="usuario">
+            <mat-error *ngIf="addressFormLogin.controls['usuario'].hasError('required')">
+              El usuario es <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Contraseña" type="password" formControlName="contrasena">
+            <mat-error *ngIf="addressFormLogin.controls['contrasena'].hasError('required')">
+              La contraseña es <strong>requerida</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!addressFormLogin.valid">Ingresar</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

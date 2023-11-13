@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { HttpResponse } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +25,7 @@ export class ApiService {
 
   public async delete(controller: String, Id: string) {
     var result: any;
-    await this.api.delete(this.Url + controller + "/" + Id).toPromise().then((res =>{
+    await this.api.delete(this.Url + controller + "/" + Id).toPromise().then((res => {
       console.log(res);
       result = res;
     }))
@@ -37,6 +38,29 @@ export class ApiService {
 
   public async put(controller: String, Id: string, body: any) {
     return await this.api.put(this.Url + controller + "/" + Id, body).subscribe((res) => { });
+  }
+
+  public async login(usuario: string, contrasena: string): Promise<boolean> {
+    var result: any;
+    console.log("Hola");
+    try {
+      const response: HttpResponse<any> = await this.api.get(this.Url + "Usuario" + `/${usuario}/${contrasena}`, { observe: 'response' }).toPromise();
+      console.log("EL ESTADO ES: "+response.status);
+
+      if (response.status >= 200 && response.status < 300) {
+        result = true;
+      } else {
+        console.log("EL ESTADO ES: "+response.status);
+        result = false;        
+      }
+    } catch (error) {
+      console.log("EL ESTADO ES: F");
+      console.error(error);
+      result = false; 
     }
+    return result;
+  }
+
+
 
 }

@@ -56,6 +56,7 @@ import { FormModuloComponent } from './Componentes/Forms/form-modulo/form-modulo
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { LoginComponent } from './Componentes/login/login.component';
 
 
 @NgModule({
@@ -90,7 +91,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     FormPreguntaComponent,
     FormRolPermisoComponent,
     FormTemaComponent,
-    FormModuloComponent
+    FormModuloComponent,
+    LoginComponent
   ],
   imports: [
     HttpClientModule,
