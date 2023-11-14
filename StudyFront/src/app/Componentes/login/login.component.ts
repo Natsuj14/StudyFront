@@ -28,30 +28,39 @@ export class LoginComponent {
     public api: ApiService,
   ) { }
 
-public async onSubmit(): Promise<void> {
-  this.infoUsuario.usuario = this.addressFormLogin.controls['usuario'].value;
-  this.infoUsuario.contrasena = this.addressFormLogin.controls['contrasena'].value;
+  public async onSubmit(): Promise<void> {
+    try {
+      this.infoUsuario.usuario = this.addressFormLogin.controls['usuario'].value;
+      this.infoUsuario.contrasena = this.addressFormLogin.controls['contrasena'].value;
 
-  const res = await this.api.login(this.infoUsuario.usuario, this.infoUsuario.contrasena);
-  console.log("I got: "+res);
+      const res = await this.api.login(this.infoUsuario.usuario, this.infoUsuario.contrasena);
+      console.log("I got:");
+      console.log(res.body);
 
-  if (res) {
-    const result = await Swal.fire({
-      title: 'Dato confirmado',
-      text: 'Ingreso',
-      icon: 'success',
-      confirmButtonText: 'OK'
-    });
-    if (result.isConfirmed) {
-      window.location.reload();
+      if (res) {
+        const result = await Swal.fire({
+          title: 'Dato confirmado',
+          text: 'Ingreso',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        });
+        if (result.isConfirmed) {
+          window.location.reload();
+        }
+      } else {
+        Swal.fire(
+          'Ingreso fallido',
+          'Datos incorrectos, intente de nuevo',
+          'error'
+        );
+      }
+    } catch (error) {
+      Swal.fire(
+        'Ingreso fallido',
+        'Datos incorrectos, intente de nuevo',
+        'error'
+      );
     }
-  }else{
-    Swal.fire(
-      'Ingreso fallido',
-      'Datos incorrectos, intente de nuevo',
-      'error'
-    );
   }
-}
 
 }

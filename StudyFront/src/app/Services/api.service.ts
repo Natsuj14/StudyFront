@@ -40,25 +40,10 @@ export class ApiService {
     return await this.api.put(this.Url + controller + "/" + Id, body).subscribe((res) => { });
   }
 
-  public async login(usuario: string, contrasena: string): Promise<boolean> {
-    var result: any;
-    console.log("Hola");
-    try {
-      const response: HttpResponse<any> = await this.api.get(this.Url + "Usuario" + `/${usuario}/${contrasena}`, { observe: 'response' }).toPromise();
-      console.log("EL ESTADO ES: "+response.status);
+  public async login(usuario: string, contrasena: string): Promise<any> {
+    
+    return await this.api.get(this.Url + "Usuario" + `/${usuario}/${contrasena}`, { observe: 'response' }).toPromise();
 
-      if (response.status >= 200 && response.status < 300) {
-        result = true;
-      } else {
-        console.log("EL ESTADO ES: "+response.status);
-        result = false;        
-      }
-    } catch (error) {
-      console.log("EL ESTADO ES: F");
-      console.error(error);
-      result = false; 
-    }
-    return result;
   }
 
 
