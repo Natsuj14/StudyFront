@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 
 import { FormBuilder, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/Services/api.service';
+import { IngresoService } from 'src/app/Services/ingreso.service';
 import Swal from 'sweetalert2';
 
 
@@ -24,9 +25,7 @@ export class LoginComponent {
     contrasena: ""
   }
 
-  constructor(
-    public api: ApiService,
-  ) { }
+  constructor(public api: ApiService, public ingreso: IngresoService) { }
 
   public async onSubmit(): Promise<void> {
     try {
@@ -34,19 +33,18 @@ export class LoginComponent {
       this.infoUsuario.contrasena = this.addressFormLogin.controls['contrasena'].value;
 
       const res = await this.api.login(this.infoUsuario.usuario, this.infoUsuario.contrasena);
-      console.log("I got:");
+      console.log("Usuario: ");
       console.log(res.body);
 
       if (res) {
-        const result = await Swal.fire({
+        this.ingreso.setUsuarioConectado(true);
+        localStorage.setItem('usuarioConectado', 'true');
+        Swal.fire({
           title: 'Dato confirmado',
           text: 'Ingreso',
           icon: 'success',
           confirmButtonText: 'OK'
         });
-        if (result.isConfirmed) {
-          window.location.reload();
-        }
       } else {
         Swal.fire(
           'Ingreso fallido',

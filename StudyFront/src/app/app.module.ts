@@ -119,7 +119,7 @@ import { LoginComponent } from './Componentes/login/login.component';
     AvatarModule,
     MatDialogModule,
     MatNativeDateModule,
-    MatDatepickerModule
+    MatDatepickerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

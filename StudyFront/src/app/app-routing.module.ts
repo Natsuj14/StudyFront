@@ -12,8 +12,10 @@ import { PreguntaComponent } from './Componentes/pregunta/pregunta.component';
 import { RolPermisoComponent } from './Componentes/rol-permiso/rol-permiso.component';
 import { TemaComponent } from './Componentes/tema/tema.component';
 import { ModuloComponent } from './Componentes/modulo/modulo.component';
+import { AppComponent } from './app.component';
 
 const routes: Routes = [
+  { path: "", component: AppComponent },
   { path: "Usuarios", component: UsuarioComponent },
   { path: "Roles", component: RolComponent },
   { path: "Pruebas", component: PruebaComponent },
