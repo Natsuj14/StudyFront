@@ -120,6 +120,8 @@ import { LoginComponent } from './Componentes/login/login.component';
     MatDialogModule,
     MatNativeDateModule,
     MatDatepickerModule,
+    MatMenuModule,
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -13,6 +13,7 @@ import { RolPermisoComponent } from './Componentes/rol-permiso/rol-permiso.compo
 import { TemaComponent } from './Componentes/tema/tema.component';
 import { ModuloComponent } from './Componentes/modulo/modulo.component';
 import { AppComponent } from './app.component';
+import { LoginComponent } from './Componentes/login/login.component';
 
 const routes: Routes = [
   { path: "", component: AppComponent },
@@ -27,8 +28,8 @@ const routes: Routes = [
   { path: "Preguntas", component: PreguntaComponent },
   { path: "Rol-Permiso", component: RolPermisoComponent },
   { path: "Temas", component: TemaComponent },
-  { path: "Modulos", component: ModuloComponent }
-  
+  { path: "Modulos", component: ModuloComponent },
+  { path: "Login", component: LoginComponent }
 ];
 
 @NgModule({

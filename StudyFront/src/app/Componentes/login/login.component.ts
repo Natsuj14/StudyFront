@@ -27,6 +27,7 @@ export class LoginComponent {
 
   constructor(public api: ApiService, public ingreso: IngresoService) { }
 
+  
   public async onSubmit(): Promise<void> {
     try {
       this.infoUsuario.usuario = this.addressFormLogin.controls['usuario'].value;

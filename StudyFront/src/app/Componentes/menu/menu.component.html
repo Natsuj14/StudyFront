@@ -15,7 +15,7 @@
       <a mat-list-item href="/Rol-Permiso">Rol-Permiso</a>
       <a mat-list-item href="/Temas">Temas</a>
       <a mat-list-item href="/Modulos">Modulos</a>
-      
+
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -26,7 +26,16 @@
       </button>
       <span>StudyFront</span>
       <div class="userIcon">
-        <ngx-avatars name="Alexander Machado"></ngx-avatars>
+        <ngx-avatars name="Alexander Machado" [matMenuTriggerFor]="menu"></ngx-avatars>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>exit_to_app</mat-icon>
+            <span>
+              <!-- <a mat-list-item href="/Login" (click)="salir()">Salir</a> -->
+              <a mat-list-item (click)="salir()">Salir</a>
+            </span>
+          </button>
+        </mat-menu>
       </div>
     </mat-toolbar>
     <router-outlet></router-outlet>
