@@ -26,12 +26,11 @@
       </button>
       <span>StudyFront</span>
       <div class="userIcon">
-        <ngx-avatars name="Alexander Machado" [matMenuTriggerFor]="menu"></ngx-avatars>
+        <ngx-avatars [name]="nombre" [matMenuTriggerFor]="menu"></ngx-avatars>
         <mat-menu #menu="matMenu">
           <button mat-menu-item>
             <mat-icon>exit_to_app</mat-icon>
             <span>
-              <!-- <a mat-list-item href="/Login" (click)="salir()">Salir</a> -->
               <a mat-list-item (click)="salir()">Salir</a>
             </span>
           </button>

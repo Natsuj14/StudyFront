@@ -1,52 +1,46 @@
-<form [formGroup]="addressFormUsuario" novalidate (ngSubmit)="onSubmit()">
-    <mat-card class="shipping-card">
-        <mat-card-header>
-            <mat-card-title>{{titulo}}</mat-card-title>
-        </mat-card-header>
-        <br>
-        <mat-card-content>
-            <div class="row">
-                <div class="col">
-                    <mat-form-field class="full-width">
-                        <input matInput placeholder="Persona" formControlName="idpersona">
-                        <mat-error *ngIf="addressFormUsuario.controls['idpersona'].hasError('required')">
-                            El Id Persona es <strong>requerido</strong>
-                        </mat-error>
-                    </mat-form-field>
+<div [ngClass]="{'estilos-true': login, 'estilos-false': !login}">
+    <form [formGroup]="addressFormUsuario" novalidate (ngSubmit)="onSubmit()">
+        <mat-card class="shipping-card">
+            <mat-card-header>
+                <mat-card-title>{{titulo}}</mat-card-title>
+            </mat-card-header>
+            <br>
+            <mat-card-content>
+                <div class="row">
+                    <div class="col">
+                        <mat-form-field class="full-width">
+                            <input matInput placeholder="Persona" formControlName="idpersona">
+                            <mat-error *ngIf="addressFormUsuario.controls['idpersona'].hasError('required')">
+                                El Id Persona es <strong>requerido</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <mat-form-field class="full-width">
-                        <input matInput placeholder="Nickname" formControlName="nickname">
-                        <mat-error *ngIf="addressFormUsuario.controls['nickname'].hasError('required')">
-                            El Nickname es <strong>requerido</strong>
-                        </mat-error>
-                    </mat-form-field>
+                <div class="row">
+                    <div class="col">
+                        <mat-form-field class="full-width">
+                            <input matInput placeholder="Nickname" formControlName="nickname">
+                            <mat-error *ngIf="addressFormUsuario.controls['nickname'].hasError('required')">
+                                El Nickname es <strong>requerido</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <mat-form-field class="full-width">
-                        <input matInput placeholder="Contraseña" formControlName="contraseña">
-                        <mat-error *ngIf="addressFormUsuario.controls['contraseña'].hasError('required')">
-                            La Contraseña es <strong>requerida</strong>
-                        </mat-error>
-                    </mat-form-field>
+                <div class="row">
+                    <div class="col">
+                        <mat-form-field class="full-width">
+                            <input matInput placeholder="Contraseña" formControlName="contraseña">
+                            <mat-error *ngIf="addressFormUsuario.controls['contraseña'].hasError('required')">
+                                La Contraseña es <strong>requerida</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
                 </div>
-                <!-- <div class="col">
-                    <mat-form-field class="full-width">
-                        <input matInput placeholder="Confirmar Contraseña" formControlName="contraseña" type="password">
-                        <mat-error *ngIf="addressFormUsuario.controls['contraseña'].hasError('required')">
-                            La Contraseña es <strong>requerida</strong>
-                        </mat-error>
-                    </mat-form-field>
-                </div> -->
-            </div>
-        </mat-card-content>
-        <mat-card-actions>
-            <button mat-raised-button color="primary" type="submit"
-                [disabled]="!addressFormUsuario.valid">{{accion}}</button>
-        </mat-card-actions>
-    </mat-card>
-</form>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button color="primary" type="submit"
+                    [disabled]="!addressFormUsuario.valid">{{accion}}</button>
+            </mat-card-actions>
+        </mat-card>
+    </form>
+</div>

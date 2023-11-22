@@ -1,0 +1,27 @@
+<form [formGroup]="addressFormForgotPWD" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>Recupera tu cuenta</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <div class="col">
+            <mat-form-field class="full-width">
+                <input matInput placeholder="Correo" formControlName="correo">
+                <mat-error *ngIf="addressFormForgotPWD.controls['correo'].hasError('required')">
+                    El correo es <strong>requerido</strong>
+                </mat-error>
+                <mat-error *ngIf="addressFormForgotPWD.controls['correo'].hasError('email')">
+                  Debe ingresar un correo <strong>valido</strong>
+              </mat-error>
+            </mat-form-field>
+        </div>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!addressFormForgotPWD.valid">Enviar</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

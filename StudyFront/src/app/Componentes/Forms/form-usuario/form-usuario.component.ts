@@ -23,6 +23,7 @@ export class FormUsuarioComponent implements OnInit {
 
   titulo = "";
   accion = "";
+  login : boolean;
   infoUsuario: UsuariosModel = {
     idPersona: 0,
     nickname: "",
@@ -42,6 +43,7 @@ export class FormUsuarioComponent implements OnInit {
 
   }
   ngOnInit(): void {
+    this.login = this.modalService.login
     this.accion = this.modalService.accion.value;
     this.titulo = this.modalService.titulo;
     console.log(this.modalService.usuario);
@@ -56,7 +58,7 @@ export class FormUsuarioComponent implements OnInit {
       this.addressFormUsuario.controls['contraseña'].setValue(
         this.modalService.usuario.contraseña + ''
       );
-    }else{
+    } else {
       this.addressFormUsuario.controls['idpersona'].setValue(
         null
       );
@@ -78,7 +80,7 @@ export class FormUsuarioComponent implements OnInit {
         this.infoUsuarioPut.nickname = this.infoUsuario.nickname;
         this.infoUsuarioPut.contraseña = this.infoUsuario.contraseña;
 
-        const response = await this.api.put("Usuario",this.modalService.id+'', this.infoUsuarioPut);
+        const response = await this.api.put("Usuario", this.modalService.id + '', this.infoUsuarioPut);
 
         if (response) {
           const result = await Swal.fire({
@@ -97,7 +99,7 @@ export class FormUsuarioComponent implements OnInit {
             'error'
           );
         }
-        
+
       } else {
 
         const response = await this.api.post("Usuario", this.infoUsuario);

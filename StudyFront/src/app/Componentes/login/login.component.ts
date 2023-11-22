@@ -4,6 +4,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/Services/api.service';
 import { IngresoService } from 'src/app/Services/ingreso.service';
 import Swal from 'sweetalert2';
+import { FormForgotpwdComponent } from '../Forms/form-forgotpwd/form-forgotpwd.component';
+import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
@@ -25,9 +27,13 @@ export class LoginComponent {
     contrasena: ""
   }
 
-  constructor(public api: ApiService, public ingreso: IngresoService) { }
+  constructor(public api: ApiService, public ingreso: IngresoService, public dialog: MatDialog) { }
 
-  
+  openDialog() {
+    this.dialog.open(FormForgotpwdComponent, {
+    })
+  }
+
   public async onSubmit(): Promise<void> {
     try {
       this.infoUsuario.usuario = this.addressFormLogin.controls['usuario'].value;
@@ -35,7 +41,9 @@ export class LoginComponent {
 
       const res = await this.api.login(this.infoUsuario.usuario, this.infoUsuario.contrasena);
       console.log("Usuario: ");
-      console.log(res.body);
+      console.log(res.body.usuario);
+      var datosUsuario = JSON.stringify(res.body.usuario);
+      localStorage.setItem('datosUsuario', datosUsuario);
 
       if (res) {
         this.ingreso.setUsuarioConectado(true);

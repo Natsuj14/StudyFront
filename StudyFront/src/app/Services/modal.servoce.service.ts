@@ -19,6 +19,7 @@ import { ModulosModels } from '../Models/ModulosModels';
 export class ModalServoceService {
 
   id: number;
+  login: boolean;
   area: AreasModels;
   estadistica: EstadisticasModels;
   ingreso: IngresosModels;

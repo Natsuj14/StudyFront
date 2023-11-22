@@ -1,0 +1,28 @@
+
+<body>
+    <div class="contenedor">
+        <main>
+            <div class="cajaTrasera">
+                <div class="cajaTraseraLogin">
+                    <h3>¿Ya tienes una cuenta?</h3>
+                    <p>Inicia sesion para entrar en la pagina</p>
+                    <button id="btnIniciarSesion" (click)="iniciarSesion()">Iniciar sesion</button>
+                </div>
+                <div class="cajaTraseraRegistro">
+                    <h3>¿Aun no tienes una cuenta?</h3>
+                    <p>Registrate para que puedas acceder</p>
+                    <button id="btnRegistrarse" (click)="registrarse()">Registrarse</button>
+                </div>
+            </div>
+
+            <div [style.left]="place" class="contenedorLoginRegistro" >
+                <div [style.display]="dis2"class="login" >
+                    <app-login></app-login>
+                </div>
+                <div [style.display]="dis1"class="registro">
+                    <app-form-usuario></app-form-usuario>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>

@@ -14,7 +14,9 @@ import Swal from 'sweetalert2';
   styleUrls: ['./menu.component.css']
 })
 
-export class MenuComponent {
+export class MenuComponent{
+   usuario: any;
+   nombre: string;
   private breakpointObserver = inject(BreakpointObserver);
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
@@ -24,6 +26,9 @@ export class MenuComponent {
     );
 
   constructor(public api: ApiService, public ingreso: IngresoService) {
+    this.usuario = localStorage.getItem('datosUsuario');
+    this.usuario = JSON.parse(this.usuario);
+    this.nombre = this.usuario.nickname;
   }
 
   public async salir() {
@@ -39,8 +44,6 @@ export class MenuComponent {
     
         if (result.isConfirmed) {
           try {
-    
-            // Clear local storage
             localStorage.setItem('usuarioConectado', 'false');
             this.ingreso.cerrarSesion;
             window.location.reload();
@@ -55,7 +58,6 @@ export class MenuComponent {
             );
           }
         }
-    // Clear local storage
   }
 }
 

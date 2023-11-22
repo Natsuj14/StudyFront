@@ -57,6 +57,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { LoginComponent } from './Componentes/login/login.component';
+import { InicioComponent } from './Componentes/inicio/inicio.component';
+import { FormForgotpwdComponent } from './Componentes/Forms/form-forgotpwd/form-forgotpwd.component';
 
 
 @NgModule({
@@ -92,7 +94,9 @@ import { LoginComponent } from './Componentes/login/login.component';
     FormRolPermisoComponent,
     FormTemaComponent,
     FormModuloComponent,
-    LoginComponent
+    LoginComponent,
+    InicioComponent,
+    FormForgotpwdComponent
   ],
   imports: [
     HttpClientModule,

@@ -1,27 +1,102 @@
-.full-width {
+/* Estilos para encendido = false */
+.estilos-false .full-width {
   width: 100%;
 }
 
-.shipping-card {
+.estilos-false .shipping-card {
   min-width: 120px;
   margin: 20px auto;
 }
 
-.mat-radio-button {
+.estilos-false .mat-radio-button {
   display: block;
   margin: 5px 0;
 }
 
-.row {
+.estilos-false .row {
   display: flex;
   flex-direction: row;
 }
 
-.col {
+.estilos-false .col {
   flex: 1;
   margin-right: 20px;
 }
 
-.col:last-child {
+.estilos-false .col:last-child {
   margin-right: 0;
+}
+
+/* Estilos para encendido = true */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.estilos-true .shipping-card {
+  width: 100%;
+}
+
+.estilos-true mat-card-header {
+  width: 100%;
+  color: rgb(0, 0, 173);
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 10px 0 30px 0;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 20px;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.estilos-true mat-card-title {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.estilos-true input {
+	display: block;
+	margin-bottom: 5px;
+	width: 100%;
+	transition: border-width 0.2s ease;
+	border-radius: 2px;
+	color: #ccc;
+}
+
+.estilos-true a {
+  font-size: 0.8em;
+  text-decoration: none;
+}
+
+.estilos-true mat-card-content {
+  padding-bottom: 20px;
+}
+
+.estilos-true button {
+  width: 100%;
+  height: 100%;
+  padding: 25px 10px;
+  color: #fff;
+  border: none;
+  margin-top: 20px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  max-height: 60px;
+  border-bottom-width: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.estilos-true button:active {
+  transform: scale(0.95);
+}
+
+.estilos-true button:focus {
+  outline: none;
 }

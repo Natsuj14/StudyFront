@@ -32,6 +32,7 @@ export class UsuarioComponent implements OnInit {
   openDialog() {
     this.modalService.accion.next("Registrar");
     this.modalService.titulo = "Crear usuario";
+    this.modalService.login = false;
     this.dialog.open(FormUsuarioComponent, {
     })
   }
