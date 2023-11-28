@@ -7,10 +7,12 @@ import { ApiService } from 'src/app/Services/api.service';
 import { FormPruebaComponent } from '../Forms/form-prueba/form-prueba.component';
 import Swal from 'sweetalert2';
 import { ModalServoceService } from 'src/app/Services/modal.servoce.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-prueba',
   templateUrl: './prueba.component.html',
+  providers: [DatePipe],
   styleUrls: ['./prueba.component.css']
 })
 
@@ -23,7 +25,7 @@ export class PruebaComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   dataSource: MatTableDataSource<any>;
 
-  constructor(public api: ApiService, public dialog: MatDialog, public modalService: ModalServoceService) {
+  constructor(private datePipe: DatePipe, public api: ApiService, public dialog: MatDialog, public modalService: ModalServoceService) {
     this.dataSource = new MatTableDataSource;
   }
 
@@ -36,10 +38,10 @@ export class PruebaComponent implements OnInit {
 
   ngOnInit(): void {
     this.api.GET("Prueba").then((res) => {
-
       for (let index = 0; index < res.length; index++) {
+        // Formatear la fecha en formato dd/mm/yyyy
+        res[index].fechaPrueba = this.datePipe.transform(res[index].fechaPrueba, 'dd/MM/yyyy');
         this.loadTable([res[index]]);
-
       }
 
       this.dataSource.data = res;

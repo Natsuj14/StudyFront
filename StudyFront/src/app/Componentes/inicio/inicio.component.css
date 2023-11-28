@@ -8,7 +8,7 @@
 
 body {
     margin: 0;
-    background-image: url(../../img/fondo4.jpg);
+    background-image: url(../../img/Fondo1.jpg);
     /* background-color: rgb(90, 164, 255); */
     background-size: cover;
     background-repeat: no-repeat;
@@ -87,10 +87,10 @@ main {
     width: 100%;
     max-width: 380px;
     position: relative;
-    top: -200px;
+    top: -220px;
     left: 10px;
     border-radius: 20px;
-    transition: left 0.35s ease-in-out;
+    transition: left 0.4s ease-in-out;
 }
 
 .login, .registro{
@@ -102,13 +102,17 @@ main {
 }
 
 .login{
+    left: 20px;
     height: 400px;
     opacity: 1;
     display: block;
 }
 
 .registro{
-    top: -220px;
+    top: -200px;
     height: 450px;
     display: none;
+}
+@media screen {
+    
 }

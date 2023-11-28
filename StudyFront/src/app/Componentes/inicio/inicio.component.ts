@@ -35,7 +35,7 @@ export class InicioComponent {
   registrarse() {
     this.dis1 = 'block';
     this.dis2 = 'none';
-    this.place = '410px';
+    this.place = '400px';
     setTimeout(() => {
       this.dis1 = 'block';
       this.dis2 = 'none';

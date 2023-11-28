@@ -8,14 +8,21 @@
         <table mat-table [dataSource]="dataSource" matSort>
 
             <div matColumnDef="{{disCol}}" *ngFor="let disCol of  displayedColumns">
-                <div *ngIf="disCol!='Acciones'">
+                <div *ngIf="disCol !== 'Acciones'">
                     <th mat-header-cell *matHeaderCellDef>{{disCol}}</th>
-                    <td mat-cell *matCellDef="let element">{{element[disCol]}}</td>
-                </div>
+                    <td mat-cell *matCellDef="let element">
+                      <!-- Verifica si el campo es una fecha -->
+                      <ng-container *ngIf="disCol !== 'fecha'; else dateCell">
+                        {{element[disCol]}}
+                      </ng-container>
+                      <ng-template #dateCell>
+                        {{ formatDate(element[disCol]) }}
+                      </ng-template>
+                    </td>
+                  </div>
                 <div *ngIf="disCol=='Acciones'">
                     <th mat-header-cell *matHeaderCellDef>{{disCol}}</th>
                     <td mat-cell *matCellDef="let element">
-                        <!-- <a class="option" (click)="editarRegistro(element)"><i class="fi fi-rs-pencil"></i></a> -->
                         <a class="option" (click)="editarIngreso(element)"><i class="fi fi-br-edit"></i></a>
                         <a class="option" id="RedIcon" (click)="eliminarIngreso(element)"><i class="fi fi-sr-trash"></i></a>
                     </td>

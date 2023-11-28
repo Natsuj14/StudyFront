@@ -19,6 +19,9 @@ export class IconOverviewExample { }
 export class UsuarioComponent implements OnInit {
 
   Titulo = "Usuarios";
+  totalItems: number = 0;
+  pageSize: number = 10;
+  pageIndex: number = 0;
 
   displayedColumns: string[] = [];
   @ViewChild(MatPaginator) paginator: MatPaginator;

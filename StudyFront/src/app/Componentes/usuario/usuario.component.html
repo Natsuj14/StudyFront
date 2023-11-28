@@ -3,10 +3,10 @@
         <mat-label>Filtro</mat-label>
         <input matInput (keyup)="applyFilter($event)" placeholder="Filtro" #input>
     </mat-form-field>
-    
+
     <div class="mat-elevation-z8">
         <table mat-table [dataSource]="dataSource" matSort>
-    
+
             <div matColumnDef="{{disCol}}" *ngFor="let disCol of  displayedColumns">
                 <div *ngIf="disCol!='Acciones'">
                     <th mat-header-cell *matHeaderCellDef>{{disCol}}</th>
@@ -17,21 +17,22 @@
                     <td mat-cell *matCellDef="let element">
                         <!-- <a class="option" (click)="editarRegistro(element)"><i class="fi fi-rs-pencil"></i></a> -->
                         <a class="option" (click)="editarUsuario(element)"><i class="fi fi-br-edit"></i></a>
-                        <a class="option" id="RedIcon" (click)="eliminarUsuario(element)"><i class="fi fi-sr-trash"></i></a>
+                        <a class="option" id="RedIcon" (click)="eliminarUsuario(element)"><i
+                                class="fi fi-sr-trash"></i></a>
                     </td>
                 </div>
             </div>
-    
+
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    
+
             <tr class="mat-row" *matNoDataRow>
                 <td class="mat-cell" colspan="4">No se encontraron resultados para "{{input.value}}"</td>
             </tr>
         </table>
-    
-        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
-    
+
+       <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+
         <div class="crear">
             <button mat-raised-button (click)="openDialog()">Crear usuario</button>
         </div>

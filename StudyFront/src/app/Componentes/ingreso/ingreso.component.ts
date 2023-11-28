@@ -1,9 +1,8 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ApiService } from 'src/app/Services/api.service';
-import { FormUsuarioComponent } from '../Forms/form-usuario/form-usuario.component';
 import { MatDialog } from '@angular/material/dialog';
 import { FormIngresoComponent } from '../Forms/form-ingreso/form-ingreso.component';
 import Swal from 'sweetalert2';
@@ -28,6 +27,11 @@ export class IngresoComponent implements OnInit {
     this.dataSource = new MatTableDataSource;
   }
 
+  formatDate(dateString: string): string {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('es-ES');
+  }
+  
   openDialog() {
     this.modalService.accion.next("Registrar");
     this.modalService.titulo = "Crear ingreso";
@@ -46,7 +50,10 @@ export class IngresoComponent implements OnInit {
       this.dataSource.data = res;
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-      console.log(this.dataSource);
+  
+      // Imprimir fechas antes y después de formatearlas
+      console.log("Fechas sin formato:", res.map(item => item.fecha));
+      console.log("Fechas formateadas:", res.map(item => this.formatDate(item.fecha)));;
 
     })
   }

@@ -3,18 +3,44 @@
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item href="/Usuarios">Usuarios</a>
-      <a mat-list-item href="/Roles">Roles</a>
-      <a mat-list-item href="/Pruebas">Pruebas</a>
-      <a mat-list-item href="/Areas">Areas</a>
-      <a mat-list-item href="/Estadisticas">Estadisticas</a>
-      <a mat-list-item href="/Ingresos">Ingresos</a>
-      <a mat-list-item href="/Materias">Materias</a>
-      <a mat-list-item href="/Personas">Personas</a>
-      <a mat-list-item href="/Preguntas">Preguntas</a>
-      <a mat-list-item href="/Rol-Permiso">Rol-Permiso</a>
-      <a mat-list-item href="/Temas">Temas</a>
-      <a mat-list-item href="/Modulos">Modulos</a>
+      <mat-nav-list>
+        <a mat-list-item class="custom-link" href="/Usuarios">
+          <mat-icon>person</mat-icon> Usuarios
+        </a>
+        <a mat-list-item href="/Roles">
+          <mat-icon>account_circle</mat-icon> Roles
+        </a>
+        <a mat-list-item href="/Pruebas">
+          <mat-icon>assignment</mat-icon> Pruebas
+        </a>
+        <a mat-list-item href="/Areas">
+          <mat-icon>school</mat-icon> Áreas
+        </a>
+        <a mat-list-item href="/Estadisticas">
+          <mat-icon>bar_chart</mat-icon> Estadisticas
+        </a>
+        <a mat-list-item href="/Ingresos">
+          <mat-icon>input</mat-icon> Ingresos
+        </a>
+        <a mat-list-item href="/Materias">
+          <mat-icon>book</mat-icon> Materias
+        </a>
+        <a mat-list-item href="/Personas">
+          <mat-icon>people</mat-icon> Personas
+        </a>
+        <a mat-list-item href="/Preguntas">
+          <mat-icon>question_answer</mat-icon> Preguntas
+        </a>
+        <a mat-list-item href="/Rol-Permiso">
+          <mat-icon>security</mat-icon> Rol-Permiso
+        </a>
+        <a mat-list-item href="/Temas">
+          <mat-icon>subject</mat-icon> Temas
+        </a>
+        <a mat-list-item href="/Modulos">
+          <mat-icon>extension</mat-icon> Módulos
+        </a>
+      </mat-nav-list>
 
     </mat-nav-list>
   </mat-sidenav>
